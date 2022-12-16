@@ -1,0 +1,105 @@
+#+title: README
+#+date: <2022-12-07 Wed>
+
+* How did I end up here?
+I kept a list of programs that I had installed and was working on finding a program with which to manage all my meticulously crafted dotfiles while simultaneously jumping down the emacs rabbit hole, specifically [[https://github.com/doomemacs/doomemacs][Doom Emacs]] (Thanks [[https://distro.tube/index.html][DistroTube]] !) I fell in love with the configuration system of Doom Emacs.
+
+I then started watching [[https:systemcrafters.net][System Crafters]] on YouTube and was introduced to [[https:guix.gnu.org][Guix]] which I tried to install on an older laptop that needed proprietary software in order to have operable WiFi. I looked for something that allowed unfree software and binary blobs out of the box, behold, NixOs.
+
+For the last seven years I had distro hopped: Ubuntu, Debian, Arch, Fedora, Arch again, Manjaro, now my pursuit of sanity is done. I failed. I give up and Nixos is my final computational resting place.
+
+If you are looking at this repo, I don't think I need to explain what [[https://www.nixos.org][NixOS]] is. I will warn you, once you take the first step of configuring a system, /You Will Never Go Back/.
+
+* System Component Overview
+|                 | Meletao             | Kouphizo            | Kerugma         | Nephos | Thureos |
+| Shell           | Fish                | Fish                | Fish            | Bash   | Bash    |
+| Desktop Manager | myXSession          | myXSession          | Gnome (Wayland) | -      | -       |
+| Window Manager  | Xmonad              | Xmonad              | Gnome           | -      | -       |
+| Compositor      | Picom               | Picom               |                 | -      | -       |
+| Bar             | Xmobar              | Xmobar              |                 | -      | -       |
+| Hotkeys         | Xmonad              | Xmonad              |                 | -      | -       |
+| Launcher        | Rofi                | Rofi                |                 | -      | -       |
+| Theme           | Nord                | Nord                |                 | -      | -       |
+| Notifications   | Dunst               | Dunst               |                 | -      | -       |
+| Terminal        | Alacritty           | Alacritty           |                 | -      | -       |
+| Editor          | Neovim + Doom Emacs | Neovim + Doom Emacs |                 | Neovim | Neovim  |
+| Web Browser     | Qutebrowser         | Qutebrowser         | Epiphany        | -      | -       |
+
+* System Configuration Overview
+This configuration uses NixOs [[https://nixos.wiki/wiki/Flakes][Flakes]] and the [[https://github.com/divnix/hive][Hive]] library/framework.
+
+:NOTE: Understanding how to implement a flake based configuration took me a long time. I don't know how many times I have read the std docs and source code.
+
+** Hive
+*** What is hive?
+Hive is a Nixos system configuration flake with the naming convention around a beehive.
+*** Why use Hive?
+I use hive primarily because of its integration with [[https://github.com/divnix/std][std]].
+*** What about Digga?
+When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I began to switch to it. I liked the organization of [[https://github.com/divnix/digga][Digga]] and it made sense while holding to the 'traditional' nix flake layout. At the same time whilst digging around in the Divnix repos I couldn't help notice Hive and [[https://github.com/divnix/std][std]]. As I read the Standard book (more than once) and played with it in 'nix repl' I decided to skip the [[https://github.com/divnix/digga][Digga]] config and use [[https://github.com/divnix/hive][Hive]], this was further solidified after watching all of the [[https://github.com/divnix/std][std]] videos on loom[fn:1].
+** Hosts
+*** μελετάω (Meletao : Thought)
+- Daily driver laptop, this is where I do most of my work.
+*** νέφος (Nephos : Cloud)
+- Desktop server
+- Runs cloud services
+*** Κουφίζω (Kouphizo : Lightweight)
+- Pinebook Pro
+- Light in weight and processing ..., great for traveling.
+*** θυρεός (Thureos : Shield)
+- Raspberry Pi Zero W
+- Protector of my network via pihole and tailscale.
+*** Κήρυγμα (Kerugma : Preach)
+- Microsoft Surface Go 2
+- Used when teaching
+** Suites
+These are collections of profiles.
+** Profiles
+These are applications configured for use in NixOs
+* Cool Nix projects
+** Implemented in this flake
+- [[https://github.com/nix-community/home-manager][Home-manager]]
+- [[https://github.com/zhaofengli/colmena][Colmena]]
+- [[https://github.com/nix-community/disko][Disko]]
+- [[https://github.com/numtide/devshell][Devshell]]
+- [[https://github.com/misterio77/nix-colors][Nix-colors]]
+- [[https://github.com/nix-community/nixos-hardware][Nixos-hardware]]
+- [[https://github.com/numtide/flake-utils][Flake-utils]]
+- [[https://github.com/gytis-ivaskevicius/flake-utils-plus][Flake-utils-plus]]
+- [[https://github.com/ryantm/agenix][Agenix]]
+** Others
+***  Deployment
+- [[https://github.com/serokell/deploy-rs][Deploy-rs]]
+- [[https://github.com/DBCDK/morph][Morph]]
+*** Secrets Management
+- [[https://github.com/Mic92/sops-nix][Sops-nix]]
+- [[https://github.com/yaxitech/ragenix][Ragenix]] Rust based cli for agenix
+- [[https://github.com/jordanisaacs/homeage][Homeage]]
+*** Misc
+- [[https://github.com/gvolpe/dconf2nix][Dconf2nix]]
+- [[https://github.com/nix-community/impermanence][Impermanence]]
+
+* Places I have learned from
+** New Nix or NixOs users
+- https://nixos.org/guides/nix-language.html
+- https://book.divnix.com/
+- https://nixos.org/manual/nix/stable/introduction.html
+- https://github.com/justinwoo/nix-shorts
+- https://ianthehenry.com/posts/how-to-learn-nix/introduction/
+** General Flake stuff
+- https://www.tweag.io/blog/2020-05-25-flakes/
+- https://nixos.wiki/wiki/Flakes
+- https://github.com/hlissner/dotfiles
+- https://www.youtube.com/channel/UC-cY3DcYladGdFQWIKL90SQ
+** Standard Videos
+These were what help me understand [[https://github.com/divnix/std][std]] the most. It makes sense of Hive's source code.
+- [[https://www.loom.com/share/cf9d5d1a10514d65bf6b8287f7ddc7d6][Std - Introduction]]
+- [[https://www.loom.com/share/04fa1d578fd044059b02c9c052d87b77][Std - Cell Blocks Deep Dive]]
+- [[https://www.loom.com/share/27d91aa1eac24bcaaaed18ea6d6d03ca][Std - Operables & OCI]]
+- [[https://www.loom.com/share/5c1badd77ab641d3b8e256ddbba69042][Std - Nixago]]
+** Random stuff I want to remember
+- [[https://github.com/KubqoA/dotfiles][Winter Theme]]
+
+* Footnotes
+
+[fn:2] About Section from https://github.com/divnix/digga
