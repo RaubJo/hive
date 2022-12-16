@@ -6,6 +6,6 @@
       config.allowUnfree = true;
       overlays = [ ];
     };
-    imports = [ cell.nixosProfiles.base ];
+    imports = [ cell.nixosSuites.base ];
   };
 }
