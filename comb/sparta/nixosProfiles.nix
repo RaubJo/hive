@@ -1,6 +1,6 @@
 let
   inherit (inputs) nixpkgs;
-  inherit (cell) customScripts;
+  #inherit (cell) customScripts;
   lib = nixpkgs.lib // builtins;
 in {
   # Networking #
@@ -124,7 +124,7 @@ in {
   };
 
   xmonad = { config, ... }: {
-    imports = [ customScripts ];
+    imports = [ ./xmo-scripts.nix ];
     services.xserver = {
       enable = true;
       layout = "us";
