@@ -1,6 +1,7 @@
 let
   inherit (inputs) nixpkgs;
-  l = nixpkgs.lib // builtins;
+  inherit (cell) customScripts;
+  lib = nixpkgs.lib // builtins;
 in {
   # Networking #
   firewall = { config, ... }: {
@@ -52,7 +53,6 @@ in {
               "cc589f9341298c99e1e302987fb6051adfa5f16a7ceb253faac3fe467d3b8e15";
           };
           Raub = {
-
             #psk = "7857261003";
             pskRaw =
               "30152cb984de3fafec99ab6a8db9479671cc7d97a83951a24eaea60b8b0ffca4";
@@ -123,7 +123,21 @@ in {
     };
   };
 
-  xmonad = { config, ... }: { };
+  xmonad = { config, ... }: {
+    imports = [ customScripts ];
+    services.xserver = {
+      enable = true;
+      layout = "us";
+      libinput.enable = true;
+      displayManager.lightdm.enable = true;
+      defaultSession = "myXSession";
+      session = [{
+        manage = "desktop";
+        name = "myXSession";
+        start = "exec $HOME/.xsession";
+      }];
+    };
+  };
 
   ### Web Services ###
   gitea = { config, ... }: {
@@ -179,20 +193,6 @@ in {
   };
 
   ### Systemwide Configurations ####
-  env = { config, ... }: {
-    environment.etc = {
-      "resolv.conf" = {
-        text = ''
-          nameserver 192.168.1.5
-          nameserver 100.95.211.76
-          nameserver 1.1.1.1
-          nameserver 8.8.8.8
-        '';
-        mode = "644"; # This prevents tailscaled from rewriting resolv.conf
-      };
-    };
-  };
-
   fonts = { config, pkgs, ... }: {
     fonts = {
       fonts = with pkgs; [ noto-fonts liberation_ttf dejavu_fonts nerdfonts ];
@@ -215,6 +215,18 @@ in {
     console = {
       font = "Lat2-Terminus16";
       keyMap = "us";
+    };
+  };
+
+  nix = { config, pkgs, ... }: {
+    nix = {
+      package = pkgs.nixVersions.stable;
+      settings.auto-optimise-store = true;
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
     };
   };
 
@@ -276,8 +288,44 @@ in {
 
   # Sytem Services #
   ssh = { config, ... }: { services.openssh.enable = true; };
-  tailscale = { config, ... }: { services.tailscale.enable = true; };
+
+  tailscale = { config, ... }: {
+    services.tailscale.enable = true;
+    # nameserver 192.168.1.5
+    environment.etc = {
+      "resolv.conf" = {
+        text = ''
+          nameserver 100.95.211.76
+          nameserver 1.1.1.1
+          nameserver 8.8.8.8
+        '';
+        mode = "644"; # This prevents tailscaled from rewriting resolv.conf
+      };
+    };
+  };
+
+  touchscreen = { config, ... }: {
+    services.xserver.libinput = {
+      enable = true;
+      mouse = {
+        tapping = true;
+        tappingDragLock = false;
+        naturalScrolling = true;
+        horizontalScrolling = false;
+      };
+      touchpad = {
+        tapping = true;
+        tappingDragLock = true;
+        naturalScrolling = true;
+        horizontalScrolling = true;
+        disableWhileTyping = true;
+      };
+    };
+  };
 
   # System(s) Secrets
   # agenix, sops, ragenix confs go here
+  secrets = {
+
+  };
 }
