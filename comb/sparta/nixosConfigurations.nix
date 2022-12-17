@@ -42,5 +42,4 @@
     };
     imports = [ cell.nixosSuites.base cell.nixosSuites.mobile ];
   };
-
 }

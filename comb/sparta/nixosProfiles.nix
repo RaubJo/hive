@@ -230,6 +230,18 @@ in {
     };
   };
 
+  nvidia = { config, pkgs, ... }: {
+    imports = [ ./nvidiaScripts.nix ];
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.nvidia = {
+      prime.sync.enable = true;
+      prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+  };
+
   printing = { config, pkgs, ... }: {
     services.printing = {
       enable = true;
