@@ -1,0 +1,6 @@
+#+title: Hive Docs
+#+author: Joseph Raub
+#+date: <2022-12-16 Fri>
+
+* Disclaimer
+I have limited nix experience, I am a hobbyist programmer, I have only recorded the nix-fu I can understand. Understand that these are not the official docs, and there will likely not be any, go read the code for yourself.

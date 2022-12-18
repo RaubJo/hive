@@ -42,7 +42,7 @@ in {
               "2ef892d3c4497bd656eee36468170fb5f1ffc707bfffc5ca0676ab51992dbeca";
           };
           NETGEAR09-5G = {
-            psk = "2nhbcapt";
+            #psk = "2nhbcapt";
             pskRaw =
               "9b7e5b1cd33d135285b45c174b521e1232b884f8960599f06654865d4f03c8fb";
             priority = 5;
@@ -129,13 +129,15 @@ in {
       enable = true;
       layout = "us";
       libinput.enable = true;
-      displayManager.lightdm.enable = true;
-      defaultSession = "myXSession";
-      session = [{
-        manage = "desktop";
-        name = "myXSession";
-        start = "exec $HOME/.xsession";
-      }];
+      displayManager = {
+        lightdm.enable = true;
+        defaultSession = "myXSession";
+        session = [{
+          manage = "desktop";
+          name = "myXSession";
+          start = "exec $HOME/.xsession";
+        }];
+      };
     };
   };
 
@@ -261,12 +263,12 @@ in {
 
   users = { config, ... }: {
     users = {
-      mutableusers = true;
+      mutableUsers = true;
       users = {
-        root = {
-          isNormalUser = true;
-          hashedPassword = "";
-        };
+        # root = {
+        #   isNormalUser = true;
+        #   hashedPassword = "";
+        # };
         joseph = {
           isNormalUser = true;
           hashedPassword = "";
