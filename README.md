@@ -17,38 +17,6 @@
 
 [![Support room on Matrix](https://img.shields.io/matrix/hive-std-nix:matrix.org?server_fqdn=matrix.org&style=for-the-badge)](https://matrix.to/#/#hive-std-nix:matrix.org)
 
-# Table of Contents
-
-1.  [How did I end up here?](#org78e5219)
-2.  [System Component Overview](#orge918b31)
-3.  [System Configuration Overview](#org8126b08)
-    1.  [Hive](#org9123b7c)
-        1.  [What is hive?](#org0760533)
-        2.  [Why use Hive?](#orga452ffc)
-        3.  [What about Digga?](#org65a862b)
-    2.  [Hosts](#org0338a9f)
-        1.  [μελετάω (Meletao : Thought)](#org25308dc)
-        2.  [νέφος (Nephos : Cloud)](#orgec0d03b)
-        3.  [Κουφίζω (Kouphizo : Lightweight)](#org1f2b8de)
-        4.  [θυρεός (Thureos : Shield)](#org3cc2ac6)
-        5.  [Κήρυγμα (Kerugma : Preach)](#orga441ec4)
-    3.  [Suites](#org633d214)
-    4.  [Profiles](#orgdb763cf)
-4.  [Cool Nix projects](#orgccc2237)
-    1.  [Implemented in this flake](#org2bd98c4)
-    2.  [Others](#orgebaa9ef)
-        1.  [Deployment](#org3b10491)
-        2.  [Secrets Management](#orgb073a67)
-        3.  [Misc](#org4dcfd7f)
-5.  [Places I have learned from](#orgec751a2)
-    1.  [New Nix or NixOs users](#org8acf7e4)
-    2.  [General Flake stuff](#org5eaac5d)
-    3.  [Standard Videos](#org27e277a)
-    4.  [Random stuff I want to remember](#orgb2c01f8)
-
-
-
-<a id="org78e5219"></a>
 
 # How did I end up here?
 
@@ -60,8 +28,6 @@ For the last seven years I had distro hopped: Ubuntu, Debian, Arch, Fedora, Arch
 
 If you are looking at this repo, I don&rsquo;t think I need to explain what [NixOS](https://www.nixos.org) is. I will warn you, once you take the first step of configuring a system, *You Will Never Go Back*.
 
-
-<a id="orge918b31"></a>
 
 # System Component Overview
 
@@ -214,8 +180,6 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 </table>
 
 
-<a id="org8126b08"></a>
-
 # System Configuration Overview
 
 This configuration uses NixOs [Flakes](https://nixos.wiki/wiki/Flakes) and the [Hive](https://github.com/divnix/hive) library/framework.
@@ -223,45 +187,31 @@ This configuration uses NixOs [Flakes](https://nixos.wiki/wiki/Flakes) and the [
 :NOTE: Understanding how to implement a flake based configuration took me a long time. I don&rsquo;t know how many times I have read the std docs and source code.
 
 
-<a id="org9123b7c"></a>
-
 ## Hive
 
-
-<a id="org0760533"></a>
 
 ### What is hive?
 
 Hive is a Nixos system configuration flake with the naming convention around a beehive.
 
 
-<a id="orga452ffc"></a>
-
 ### Why use Hive?
 
 I use hive primarily because of its integration with [std](https://github.com/divnix/std).
 
-
-<a id="org65a862b"></a>
 
 ### What about Digga?
 
 When I came across Divnix and [Digga](https://github.com/divnix/digga), I began to switch to it. I liked the organization of [Digga](https://github.com/divnix/digga) and it made sense while holding to the &rsquo;traditional&rsquo; nix flake layout. At the same time whilst digging around in the Divnix repos I couldn&rsquo;t help notice Hive and [std](https://github.com/divnix/std). As I read the Standard book (more than once) and played with it in &rsquo;nix repl&rsquo; I decided to skip the [Digga](https://github.com/divnix/digga) config and use [Hive](https://github.com/divnix/hive), this was further solidified after watching all of the [std](https://github.com/divnix/std) videos (linked below).
 
 
-<a id="org0338a9f"></a>
-
 ## Hosts
 
-
-<a id="org25308dc"></a>
 
 ### μελετάω (Meletao : Thought)
 
 -   Daily driver laptop, this is where I do most of my work.
 
-
-<a id="orgec0d03b"></a>
 
 ### νέφος (Nephos : Cloud)
 
@@ -269,15 +219,11 @@ When I came across Divnix and [Digga](https://github.com/divnix/digga), I began 
 -   Runs cloud services
 
 
-<a id="org1f2b8de"></a>
-
 ### Κουφίζω (Kouphizo : Lightweight)
 
 -   Pinebook Pro
 -   Light in weight and processing &#x2026;, great for traveling.
 
-
-<a id="org3cc2ac6"></a>
 
 ### θυρεός (Thureos : Shield)
 
@@ -285,34 +231,24 @@ When I came across Divnix and [Digga](https://github.com/divnix/digga), I began 
 -   Protector of my network via pihole and tailscale.
 
 
-<a id="orga441ec4"></a>
-
 ### Κήρυγμα (Kerugma : Preach)
 
 -   Microsoft Surface Go 2
 -   Used when teaching
 
 
-<a id="org633d214"></a>
-
 ## Suites
 
 These are collections of profiles.
 
-
-<a id="orgdb763cf"></a>
 
 ## Profiles
 
 These are applications configured for use in NixOs
 
 
-<a id="orgccc2237"></a>
-
 # Cool Nix projects
 
-
-<a id="org2bd98c4"></a>
 
 ## Implemented in this flake
 
@@ -327,20 +263,14 @@ These are applications configured for use in NixOs
 -   [Agenix](https://github.com/ryantm/agenix)
 
 
-<a id="orgebaa9ef"></a>
-
 ## Others
 
-
-<a id="org3b10491"></a>
 
 ### Deployment
 
 -   [Deploy-rs](https://github.com/serokell/deploy-rs)
 -   [Morph](https://github.com/DBCDK/morph)
 
-
-<a id="orgb073a67"></a>
 
 ### Secrets Management
 
@@ -349,20 +279,14 @@ These are applications configured for use in NixOs
 -   [Homeage](https://github.com/jordanisaacs/homeage)
 
 
-<a id="org4dcfd7f"></a>
-
 ### Misc
 
 -   [Dconf2nix](https://github.com/gvolpe/dconf2nix)
 -   [Impermanence](https://github.com/nix-community/impermanence)
 
 
-<a id="orgec751a2"></a>
-
 # Places I have learned from
 
-
-<a id="org8acf7e4"></a>
 
 ## New Nix or NixOs users
 
@@ -373,8 +297,6 @@ These are applications configured for use in NixOs
 -   <https://ianthehenry.com/posts/how-to-learn-nix/introduction/>
 
 
-<a id="org5eaac5d"></a>
-
 ## General Flake stuff
 
 -   <https://www.tweag.io/blog/2020-05-25-flakes/>
@@ -382,8 +304,6 @@ These are applications configured for use in NixOs
 -   <https://github.com/hlissner/dotfiles>
 -   <https://www.youtube.com/channel/UC-cY3DcYladGdFQWIKL90SQ>
 
-
-<a id="org27e277a"></a>
 
 ## Standard Videos
 
@@ -394,8 +314,6 @@ These were what help me understand [std](https://github.com/divnix/std) the most
 -   [Std - Operables & OCI](https://www.loom.com/share/27d91aa1eac24bcaaaed18ea6d6d03ca)
 -   [Std - Nixago](https://www.loom.com/share/5c1badd77ab641d3b8e256ddbba69042)
 
-
-<a id="orgb2c01f8"></a>
 
 ## Random stuff I want to remember
 
