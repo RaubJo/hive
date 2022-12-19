@@ -1,6 +1,8 @@
 #+title: README
 #+date: <2022-12-07 Wed>
 
+[[img:logo.svg][logo]]
+
 * How did I end up here?
 I kept a list of programs that I had installed and was working on finding a program with which to manage all my meticulously crafted dotfiles while simultaneously jumping down the emacs rabbit hole, specifically [[https://github.com/doomemacs/doomemacs][Doom Emacs]] (Thanks [[https://distro.tube/index.html][DistroTube]] !) I fell in love with the configuration system of Doom Emacs.
 
