@@ -10,6 +10,7 @@
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
       cell.nixosSuites.laptop
+      #cell.homeConfigurations.joseph
     ];
     boot = {
       #kernelPackages = pkgs.linuxPackages_latest;

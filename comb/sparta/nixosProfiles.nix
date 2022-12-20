@@ -265,13 +265,15 @@ in {
     users = {
       mutableUsers = true;
       users = {
-        # root = {
-        #   isNormalUser = true;
+        #root = {
+        #  isNormalUser = true;
+        #  password = "password";
         #   hashedPassword = "";
         # };
         joseph = {
           isNormalUser = true;
-          hashedPassword = "";
+          password = "passowrd";
+          #hashedPassword = "";
           extraGroups = [ "wheel" "video" "dialout" "libvirtd" ];
         };
       };
