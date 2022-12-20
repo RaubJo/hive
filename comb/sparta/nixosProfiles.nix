@@ -115,11 +115,11 @@ in {
       libinput.enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
-      desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
-        elisa
-        gwenview
-        khelpcenter
-      ];
+      # desktopManager.plasma5.excludePackages = with pkgs.libsForQt5; [
+      #   elisa
+      #   gwenview
+      #   khelpcenter
+      # ];
     };
   };
 
@@ -220,6 +220,14 @@ in {
     };
   };
 
+  minify = { config, ... }: {
+    documentation = {
+      enable = true;
+      man.enable = true;
+      nixos.enable = false;
+    };
+  };
+
   nix = { config, pkgs, ... }: {
     nix = {
       package = pkgs.nixVersions.stable;
@@ -265,14 +273,13 @@ in {
     users = {
       mutableUsers = true;
       users = {
-        #root = {
-        #  isNormalUser = true;
-        #  password = "password";
-        #   hashedPassword = "";
-        # };
+        root = {
+          password = "password";
+          hashedPassword = "";
+        };
         joseph = {
           isNormalUser = true;
-          password = "passowrd";
+          password = "password";
           #hashedPassword = "";
           extraGroups = [ "wheel" "video" "dialout" "libvirtd" ];
         };

@@ -7,11 +7,12 @@ in {
   laptop = {
     imports = with nixosProfiles; [
       wpa-networks
-      xmonad
+      kde
       nvidia
       users
       printing
       fonts
+      minify
     ];
   };
   server = { imports = with nixosProfiles; [ nextcloud ]; };
@@ -23,6 +24,7 @@ in {
       fonts
       zram
       printing
+      minify
     ];
   };
 

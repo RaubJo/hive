@@ -9,18 +9,30 @@
       pass = "pass -c";
       dl = "~/.scripts/dl.sh";
       lgr = "ledger";
+
       agenix = "nix run github:ryantm/agenix --";
+      ytui = "nix run github:gvolpe/ytui-music-nix";
+
       d = "direnv";
       g = "git";
       jc = "journalctl";
       sc = "systemctl";
       md = "mkdir -p";
       rd = "rmdir";
+
       n = "nix";
-      "_" = "sudo";
-      "..." = "../..";
-      "...." = "../../..";
-      "....." = "../../...";
+      np = "nix profile";
+      ni = "np install";
+      nr = "np remove";
+      nf = "n flake";
+      nepl = "n repl";
+
+      "s" = "sudo";
+
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../...";
     };
     shellAbbrs = {
       ydl = "youtube-dl";

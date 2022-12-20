@@ -1,4 +1,5 @@
 {
+
   meletao = { config, pkgs, lib, ... }: {
     bee.system = "x86_64-linux";
     bee.pkgs = import inputs.nixos {
@@ -10,7 +11,7 @@
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      #cell.homeConfigurations.joseph
+      # cell.homeConfigurations.joseph
     ];
     boot = {
       #kernelPackages = pkgs.linuxPackages_latest;
@@ -23,7 +24,6 @@
         };
       };
     };
-
     networking = {
       hostName = "meletao";
       interfaces.enp0s31f6.useDHCP = true;
@@ -46,14 +46,15 @@
       };
       pulseaudio.enable = true;
       nvidia.powerManagement.enable = true;
-      cpu.intel = {
-        sgx.provision = {
-          enable = true;
-          user = "root";
-          group = "sgx_prov";
-          mode = "0660";
-        };
-      };
+      #  cpu.intel = {
+      #   updateMicrocode = true;
+      # sgx.provision = {
+      #   enable = true;
+      #   user = "root";
+      #   group = "sgx_prov";
+      #   mode = "0660";
+      # };
+      # };
     };
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
