@@ -274,13 +274,13 @@ in {
       mutableUsers = true;
       users = {
         root = {
-          password = "password";
-          hashedPassword = "";
+          hashedPassword =
+            "$y$j9T$oOZfbbMAOGyfU65lr6T1E.$ZuJbVwb6cOhyS8VzmrqatRUyGtT6CkGeqNot.qwkM08";
         };
         joseph = {
           isNormalUser = true;
-          password = "password";
-          #hashedPassword = "";
+          hashedPassword =
+            "$y$j9T$H2M6x83Vk7E25UNXtMHUD1$634z2TKhXck60C/a.ekTTsc5fN1fcsKosx.Mu/i1pF0";
           extraGroups = [ "wheel" "video" "dialout" "libvirtd" ];
         };
       };

@@ -14,6 +14,13 @@
       cell.nixosSuites.laptop
       # cell.homeConfigurations.joseph
     ];
+    # ++ [ bee.home.nixosModules.home-manager ] ++ [{
+    #   home-manager.useUserPackages = true;
+    #   home-manager.useGlobalPkgs = true;
+    #   home-manager.users.joseph = {
+    #     imports = [ cell.homeConfigurations.joseph ];
+    #   };
+    # }];
     boot = {
       #kernelPackages = pkgs.linuxPackages_latest;
       loader = {
