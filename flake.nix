@@ -1,8 +1,10 @@
 {
-  description = "My NixOS Hive";
+  description = "My NixOs Hive";
+
   inputs.std.url = "github:divnix/std";
   inputs.std.inputs.nixpkgs.follows = "nixpkgs";
   inputs.std.inputs.mdbook-kroki-preprocessor.follows = "std/blank";
+
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   # tools
@@ -10,16 +12,22 @@
     nixos-generators.url = "github:blaggacao/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators.inputs.nixlib.follows = "nixpkgs";
+
     colmena.url = "github:zhaofengli/colmena";
     colmena.inputs.nixpkgs.follows = "nixpkgs";
     colmena.inputs.stable.follows = "std/blank";
     colmena.inputs.flake-utils.follows = "std/flake-utils";
+
     nixgl.url = "github:guibou/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
     nixgl.inputs.flake-utils.follows = "std/flake-utils";
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   # nixpkgs & home-manager
@@ -29,7 +37,7 @@
 
     nixos-22-05.url = "github:nixos/nixpkgs/release-22.05";
     home-22-05.url =
-      "github:blaggacao/home-manager/release-22.05"; # some temp fixes
+      "github:nix-community/home-manager/release-22.05"; # some temp fixes
   };
 
   outputs = { std, self, ... }@inputs:
@@ -75,6 +83,10 @@
       packages.x86_64-linux = {
         inherit (inputs.disko.packages.x86_64-linux) disko;
       };
+      packages.aarch64-linux = {
+        inherit (inputs.disko.packages.aarch64-linux) disko;
+      };
+
       #devShells = std.harvest self [ "_QUEEN" "devshells" ];
     } {
       # tool: colmena -- "fill the jar on the soil with the honey!"
@@ -112,9 +124,9 @@
 
   # --- Flake Local Nix Configuration ----------------------------
   # TODO: adopt spongix
-  nixConfig = {
-    extra-substituters = [ ];
-    extra-trusted-public-keys = [ ];
-  };
+  #nixConfig = {
+  #  extra-substituters = [ ];
+  #  extra-trusted-public-keys = [ ];
+  #};
   # --------------------------------------------------------------
 }

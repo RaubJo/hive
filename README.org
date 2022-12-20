@@ -1,7 +1,28 @@
 #+title: README
 #+date: <2022-12-07 Wed>
+#+options: toc:nil
 
-[[img:logo.svg][logo]]
+#+begin_export markdown
+
+<div align="center">
+  <img src="logo.svg" width="250" />
+  <h1>The Hive</h1>
+  <p>The secretly open NixOS-Society</span>
+</div>
+
+---
+
+[![Standard](https://img.shields.io/badge/Nix-Standard-green?style=for-the-badge&logo=NixOS)](https://github.com/divnix/std)
+[![Colmena](https://img.shields.io/badge/Nix-Colmena-yellow?style=for-the-badge&logo=NixOS)](https://github.com/zhaofengli/colmena)
+[![Nix GL](https://img.shields.io/badge/Nix-GL-orange?style=for-the-badge&logo=NixOS)](https://github.com/guibou/nixGL)
+
+[![NixOS Generators](https://img.shields.io/badge/NixOS-generators-yellowgreen?style=for-the-badge&logo=NixOS)](https://github.com/nix-community/nixos-generators)
+[![NixOS Disko](https://img.shields.io/badge/NixOS-disko-blue?style=for-the-badge&logo=NixOS)](https://github.com/nix-community/disko)
+[![NixOS Hardware](https://img.shields.io/badge/NixOS-hardware-lightgrey?style=for-the-badge&logo=NixOS)](https://github.com/nixos/nixos-hardware)
+
+[![Support room on Matrix](https://img.shields.io/matrix/hive-std-nix:matrix.org?server_fqdn=matrix.org&style=for-the-badge)](https://matrix.to/#/#hive-std-nix:matrix.org)
+
+#+end_export
 
 * How did I end up here?
 I kept a list of programs that I had installed and was working on finding a program with which to manage all my meticulously crafted dotfiles while simultaneously jumping down the emacs rabbit hole, specifically [[https://github.com/doomemacs/doomemacs][Doom Emacs]] (Thanks [[https://distro.tube/index.html][DistroTube]] !) I fell in love with the configuration system of Doom Emacs.
@@ -38,7 +59,7 @@ Hive is a Nixos system configuration flake with the naming convention around a b
 *** Why use Hive?
 I use hive primarily because of its integration with [[https://github.com/divnix/std][std]].
 *** What about Digga?
-When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I began to switch to it. I liked the organization of [[https://github.com/divnix/digga][Digga]] and it made sense while holding to the 'traditional' nix flake layout. At the same time whilst digging around in the Divnix repos I couldn't help notice Hive and [[https://github.com/divnix/std][std]]. As I read the Standard book (more than once) and played with it in 'nix repl' I decided to skip the [[https://github.com/divnix/digga][Digga]] config and use [[https://github.com/divnix/hive][Hive]], this was further solidified after watching all of the [[https://github.com/divnix/std][std]] videos on loom[fn:1].
+When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I began to switch to it. I liked the organization of [[https://github.com/divnix/digga][Digga]] and it made sense while holding to the 'traditional' nix flake layout. At the same time whilst digging around in the Divnix repos I couldn't help notice Hive and [[https://github.com/divnix/std][std]]. As I read the Standard book (more than once) and played with it in 'nix repl' I decided to skip the [[https://github.com/divnix/digga][Digga]] config and use [[https://github.com/divnix/hive][Hive]], this was further solidified after watching all of the [[https://github.com/divnix/std][std]] videos (linked below).
 ** Hosts
 *** μελετάω (Meletao : Thought)
 - Daily driver laptop, this is where I do most of my work.
@@ -101,7 +122,3 @@ These were what help me understand [[https://github.com/divnix/std][std]] the mo
 - [[https://www.loom.com/share/5c1badd77ab641d3b8e256ddbba69042][Std - Nixago]]
 ** Random stuff I want to remember
 - [[https://github.com/KubqoA/dotfiles][Winter Theme]]
-
-* Footnotes
-
-[fn:2] About Section from https://github.com/divnix/digga

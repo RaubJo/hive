@@ -1,3 +1,5 @@
+{ config, lib, pkgs, ... }:
+
 {
   gtk = {
     enable = true;
@@ -31,4 +33,17 @@
       name = "gtk2";
     };
   };
+
+  xdg = {
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "application/x-mobipocket-ebook" = [ "calibre-ebook-viewer.desktop" ];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
+          [ "writer.desktop" ];
+      };
+    };
+  };
+
 }
