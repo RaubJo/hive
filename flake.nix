@@ -32,12 +32,11 @@
 
   # nixpkgs & home-manager
   inputs = {
-    nixos.follows = "nixos-22-05";
-    home.follows = "home-22-05";
+    nixos.follows = "nixos-22-11";
+    home.follows = "home-22-11";
 
-    nixos-22-05.url = "github:nixos/nixpkgs/release-22.05";
-    home-22-05.url =
-      "github:nix-community/home-manager/release-22.05"; # some temp fixes
+    nixos-22-11.url = "github:nixos/nixpkgs/release-22.11";
+    home-22-11.url = "github:nix-community/home-manager/release-22.11";
   };
 
   outputs = { std, self, ... }@inputs:

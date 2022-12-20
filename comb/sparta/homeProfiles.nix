@@ -24,9 +24,7 @@ in {
   # Window Managers
   xmonad = import ./homeModules/programs/xmonad;
   # awesome
-  # i3
-  # herbsulftwm
-  # bspwm
+  # hyprland
 
   # Editors
   emacs = import ./homeModules/programs/emacs;
