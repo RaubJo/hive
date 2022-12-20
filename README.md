@@ -184,7 +184,7 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 
 This configuration uses NixOs [Flakes](https://nixos.wiki/wiki/Flakes) and the [Hive](https://github.com/divnix/hive) library/framework.
 
-:NOTE: It is well worth your time to take a deep dive into nix. Studying the documentation and exploring in the nepl (nix repl). The learning curve is steep, but you already knew that. Go ahead and help yourself, instead of bumping around in the dark, turn on the lights.
+It is well worth your time to take a deep dive into nix. Studying the documentation and exploring in the nepl (nix repl). The learning curve is steep, but you already knew that. Go ahead and help yourself, instead of bumping around in the dark, turn on the lights.
 
 
 ## Hive
