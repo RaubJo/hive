@@ -28,6 +28,9 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    hyprland.url = "github:hyprwm/hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # nixpkgs & home-manager

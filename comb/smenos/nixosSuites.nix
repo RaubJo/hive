@@ -20,6 +20,7 @@ in rec {
       zram
       printing
       minify
+      users
     ];
   };
 

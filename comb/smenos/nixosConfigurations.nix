@@ -86,20 +86,21 @@
     system.stateVersion = "22.11";
   };
 
-  # kouphizo = { config, pkgs, lib, ... }: {
-  #   bee.system = "aarch64-linux";
-  #   bee.pkgs = import inputs.nixos {
-  #     inherit (inputs.nixpkgs) system;
-  #     config.allowUnfree = true;
-  #     overlays = [ ];
-  #   };
-  #   imports = [
-  #     cell.hardwareProfiles.kouphizo
-  #     cell.nixosSuites.base
-  #     cell.nixosSuites.ephemeral
-  #     cell.nixosSuites.xmonad
-  #   ];
-  # };
+  kouphizo = { config, pkgs, lib, ... }: {
+    bee.system = "aarch64-linux";
+    bee.pkgs = import inputs.nixos {
+      inherit (inputs.nixpkgs) system;
+      config.allowUnfree = true;
+      overlays = [ ];
+    };
+    imports = [
+      cell.hardwareProfiles.kouphizo
+      cell.nixosSuites.base
+      cell.nixosSuites.ephemeral
+      cell.nixosSuites.xmonad
+    ];
+    system.stateVersion = "22.11";
+  };
 
   # thureos = { config, pkgs, lib, ... }: {
   #   bee.system = "armv7-linux";
@@ -126,6 +127,8 @@
         efiSysMountPoint = "/boot/efi";
       };
     };
+
+    networking.hostName = "kerugma";
 
     system.stateVersion = "22.05";
 

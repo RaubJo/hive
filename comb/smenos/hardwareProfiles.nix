@@ -81,7 +81,24 @@
     boot.kernelModules = [ ];
     boot.extraModulePackages = [ ];
 
+    networking.hostId = "1c3833fb";
     fileSystems = {
+      "/" = {
+        device = "rpool/ephemeral/root";
+        fsType = "zfs";
+      };
+      "/nix" = {
+        device = "rpool/ephemeral/nix";
+        fsType = "zfs";
+      };
+      "/home" = {
+        device = "rpool/persistent/home";
+        fsType = "zfs";
+      };
+      "/state" = {
+        device = "rpool/persistent/state";
+        fsType = "zfs";
+      };
       "/boot" = {
         device = "/dev/disk/by-uuid/E40C-DB1A";
         fsType = "vfat";
