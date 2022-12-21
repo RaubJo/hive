@@ -1,5 +1,4 @@
 {
-
   meletao = { config, pkgs, lib, ... }: rec {
     bee.system = "x86_64-linux";
     bee.home = inputs.home;
@@ -12,7 +11,7 @@
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      # cell.homeConfigurations.joseph
+      cell.nixosSuites.xmonad
     ];
     # ++ [ bee.home.nixosModules.home-manager ] ++ [{
     #   home-manager.useUserPackages = true;
@@ -54,53 +53,81 @@
       };
       pulseaudio.enable = true;
       nvidia.powerManagement.enable = true;
-      #  cpu.intel = {
-      #   updateMicrocode = true;
-      # sgx.provision = {
-      #   enable = true;
-      #   user = "root";
-      #   group = "sgx_prov";
-      #   mode = "0660";
-      # };
-      # };
+      cpu.intel = {
+        updateMicrocode = true;
+        sgx.provision.enable = true;
+      };
     };
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
     system.stateVersion = "22.11";
   };
 
-  #   nephos = { config, pkgs, lib, ... }: {
-  #     bee.system = "x86_64-linux";
-  #     bee.pkgs = import inputs.nixos {
-  #       inherit (inputs.nixpkgs) system;
-  #       config.allowUnfree = true;
-  #       overlays = [ ];
-  #     };
-  #     imports = [ cell.nixosSuites.base cell.nixosSuites.server ];
+  nephos = { config, pkgs, lib, ... }: {
+    bee.system = "x86_64-linux";
+    bee.pkgs = import inputs.nixos {
+      inherit (inputs.nixpkgs) system;
+      config.allowUnfree = true;
+      overlays = [ ];
+    };
+
+    boot.loader.grub.enable = true;
+    boot.loader.grub.device = "/dev/sda";
+    boot.loader.grub.useOSProber = true;
+
+    networking.hostName = "nephos";
+    services.getty.autologinUser = "joseph";
+    services.nextcloud.config.extraTrustedDomains = [ ];
+    imports = [
+      cell.hardwareProfiles.nephos
+      cell.nixosSuites.base
+      cell.nixosSuites.server
+    ];
+    system.stateVersion = "22.11";
+  };
+
+  # kouphizo = { config, pkgs, lib, ... }: {
+  #   bee.system = "aarch64-linux";
+  #   bee.pkgs = import inputs.nixos {
+  #     inherit (inputs.nixpkgs) system;
+  #     config.allowUnfree = true;
+  #     overlays = [ ];
   #   };
-  #   kouphizo = { config, pkgs, lib, ... }: {
-  #     bee.system = "aarch64-linux";
-  #     bee.pkgs = import inputs.nixos {
-  #       inherit (inputs.nixpkgs) system;
-  #       config.allowUnfree = true;
-  #       overlays = [ ];
-  #     };
-  #     imports = [
-  #       cell.nixosSuites.base
-  #       #cell.nixosSuites.
-  #     ];
-  #   };
-  #   thureos = { config, pkgs, lib, ... }: {
-  #     bee.system = "armv7-linux";
-  #     imports = [ cell.nixosSuites.base ];
-  #   };
-  #   kerugma = { config, pkgs, lib, ... }: {
-  #     bee.system = "x86_64-linux";
-  #     bee.pkgs = import inputs.nixos {
-  #       inherit (inputs.nixpkgs) system;
-  #       config.allowUnfree = true;
-  #       overlays = [ ];
-  #     };
-  #     imports = [ cell.nixosSuites.base cell.nixosSuites.mobile ];
-  #   };
+  #   imports = [
+  #     cell.hardwareProfiles.kouphizo
+  #     cell.nixosSuites.base
+  #     cell.nixosSuites.ephemeral
+  #     cell.nixosSuites.xmonad
+  #   ];
+  # };
+
+  # thureos = { config, pkgs, lib, ... }: {
+  #   bee.system = "armv7-linux";
+  #   imports = [ cell.nixosSuites.base ];
+  # };
+
+  kerugma = { config, pkgs, lib, ... }: {
+    bee.system = "x86_64-linux";
+    bee.pkgs = import inputs.nixos {
+      inherit (inputs.nixpkgs) system;
+      config.allowUnfree = true;
+      overlays = [ ];
+    };
+    imports = [
+      cell.hardwareProfiles.kerugma
+      cell.nixosSuites.base
+      cell.nixosSuites.mobile
+    ];
+
+    boot.loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
+
+    system.stateVersion = "22.05";
+
+  };
 }

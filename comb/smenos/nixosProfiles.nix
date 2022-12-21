@@ -183,7 +183,7 @@ in {
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud25;
-      hostname = "localhost";
+      hostName = "localhost";
       config.adminpassFile = "${pkgs.writeText "adminpass" "123456"}";
       #config.extraTrustedDomains = [];
       # This value should be set in the system specific config because of unique ip addresses
@@ -279,9 +279,18 @@ in {
         };
         joseph = {
           isNormalUser = true;
-          hashedPassword =
+          hashedPassword = if config.networking.hostName == "kerugma" then
+            "$6$F88oWiHPI3YmK5Yv$YQgPl6XhNcy5Byw6dLc7KHu4q/pRituimcnPt7/0Q3RGtblDvVIvsFbFWHmmkfrPNd5wXMc/AvNYKDs26P1hP/"
+          else
             "$y$j9T$H2M6x83Vk7E25UNXtMHUD1$634z2TKhXck60C/a.ekTTsc5fN1fcsKosx.Mu/i1pF0";
-          extraGroups = [ "wheel" "video" "dialout" "libvirtd" ];
+          extraGroups = [
+            "wheel"
+            "video"
+            "dialout"
+            "libvirtd"
+            "networkmanager"
+            "surface-control"
+          ];
         };
       };
     };
@@ -328,27 +337,29 @@ in {
   };
 
   touchscreen = { config, ... }: {
-    services.xserver.libinput = {
-      enable = true;
-      mouse = {
-        tapping = true;
-        tappingDragLock = false;
-        naturalScrolling = true;
-        horizontalScrolling = false;
-      };
-      touchpad = {
-        tapping = true;
-        tappingDragLock = true;
-        naturalScrolling = true;
-        horizontalScrolling = true;
-        disableWhileTyping = true;
+    services = {
+      touchegg.enable = true;
+      unclutter.enable = true;
+      unclutter.timeout = 1;
+      xserver.libinput = {
+        enable = true;
+        mouse = {
+          tapping = true;
+          tappingDragLock = false;
+          naturalScrolling = true;
+          horizontalScrolling = false;
+        };
+        touchpad = {
+          tapping = true;
+          tappingDragLock = true;
+          naturalScrolling = true;
+          horizontalScrolling = true;
+          disableWhileTyping = true;
+        };
       };
     };
   };
 
   # System(s) Secrets
   # agenix, sops, ragenix confs go here
-  secrets = {
-
-  };
 }

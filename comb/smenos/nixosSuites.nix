@@ -1,21 +1,16 @@
 let inherit (cell) nixosProfiles;
-in {
+in rec {
   base = {
     imports = with nixosProfiles; [ tailscale locale nix firewall ssh ];
   };
 
   laptop = {
-    imports = with nixosProfiles; [
-      wpa-networks
-      kde
-      nvidia
-      users
-      printing
-      fonts
-      minify
-    ];
+    imports = with nixosProfiles; [ wpa-networks users printing fonts ];
   };
+  nvidia = { imports = with nixosProfiles; [ nvidia ]; };
+  ephemeral = { imports = with nixosProfiles; [ zfs zram minify ]; };
   server = { imports = with nixosProfiles; [ nextcloud ]; };
+  xmonad = { imports = [ nixosProfiles.xmonad ]; };
   mobile = {
     imports = with nixosProfiles; [
       gnome
