@@ -6,6 +6,7 @@ in {
   shellUtils = with homeProfiles; [ exa lf pass git bat feh ];
   gui = [ homeProfiles.gui ];
   xmonad = with homeProfiles; [ xmonad xmobar rofi ];
+  sway = with homeProfiles; [ sway ];
   emacs = [ homeProfiles.emacs ];
   system = with homeProfiles; [ systemProfile email packages qutebrowser ];
 }

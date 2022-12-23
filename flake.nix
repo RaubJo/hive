@@ -35,11 +35,14 @@
 
   # nixpkgs & home-manager
   inputs = {
-    nixos.follows = "nixos-22-11";
-    home.follows = "home-22-11";
+    nixos.follows = "nixos-unstable";
+    home.follows = "home-unstable";
 
     nixos-22-11.url = "github:nixos/nixpkgs/release-22.11";
     home-22-11.url = "github:nix-community/home-manager/release-22.11";
+
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-unstable.url = "github:nix-community/home-manager";
   };
 
   outputs = { std, self, ... }@inputs:

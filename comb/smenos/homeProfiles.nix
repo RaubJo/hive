@@ -18,11 +18,16 @@ in {
 
   # Status Bars
   xmobar = import ./homeModules/programs/xmobar;
-  # waybar
+  # waybar = import ./homeModuels/programs/waybar;
   # polybar
+
+  # Screen Lockers
+  # swaylock = import ./homeModules/programs/swaylock;
 
   # Window Managers
   xmonad = import ./homeModules/programs/xmonad;
+  #sway = import ./homeModules/programs/sway;
+
   # awesome
   # hyprland
 

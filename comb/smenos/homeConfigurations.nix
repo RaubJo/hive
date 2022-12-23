@@ -31,7 +31,6 @@ in {
     targets.genericLinux.enable = true;
     imports = with homeSuites;
       [ ] ++ system ++ shell ++ shellUtils ++ emacs ++ gui ++ xmonad;
-    # ++ nameOfSuite;
   };
 
   joseph-arm = { pkgs, config, lib, ... }: {

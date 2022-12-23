@@ -1,9 +1,9 @@
 {
   meletao = { pkgs, config, lib, ... }: {
     imports = [
-      #      inputs.disko.nixosModules.disko
-      #      { disko.devices = cell.diskoConfigurations.meletao; }
-      #      inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p50
+      # inputs.disko.nixosModules.disko
+      # { disko.devices = cell.diskoConfigurations.meletao; }
+      # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p50
     ];
     boot.initrd = {
       availableKernelModules = [
@@ -19,23 +19,13 @@
       kernelModules = [ "nvme" "kvm-intel" "coretemp" ];
     };
 
-    # fileSystems."/" = {
-    #   device = "/dev/disk/by-uuid/0f96add3-bed4-4d4a-b400-85a1e615971d";
-    #   fsType = "ext4";
-    # };
-
-    # fileSystems."/boot" = {
-    #   device = "/dev/disk/by-uuid/869E-504F";
-    #   fsType = "vfat";
-    # };
-
     fileSystems = {
       "/" = {
-        device = "/dev/disk/by-label/nixos";
+        device = "/dev/disk/by-uuid/0f96add3-bed4-4d4a-b400-85a1e615971d";
         fsType = "ext4";
       };
       "/boot" = {
-        device = "/dev/disk/by-boot/boot";
+        device = "/dev/disk/by-uuid/869E-504F";
         fsType = "vfat";
       };
     };
@@ -62,12 +52,7 @@
 
     swapDevices = [ ];
 
-    # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-    # (the default) this is the recommended approach. When using systemd-networkd it's
-    # still possible to use this option, but it's recommended to use it in conjunction
-    # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
     networking.useDHCP = lib.mkDefault true;
-    # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
     hardware.cpu.intel.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -275,14 +275,14 @@ in {
       users = {
         root = {
           hashedPassword =
-            "$y$j9T$oOZfbbMAOGyfU65lr6T1E.$ZuJbVwb6cOhyS8VzmrqatRUyGtT6CkGeqNot.qwkM08";
+            "$6$tNyYLYGxyzydAdhD$0EmLRGrPupIGpD4pJPZrDkZdpZ6OVEVgGv2lTiebKAlzXZbRi3kWbfQwCjXQbZfWBz7/lv8wr7IB0JpZu4uUu1";
         };
         joseph = {
           isNormalUser = true;
           hashedPassword = if config.networking.hostName == "kerugma" then
             "$6$F88oWiHPI3YmK5Yv$YQgPl6XhNcy5Byw6dLc7KHu4q/pRituimcnPt7/0Q3RGtblDvVIvsFbFWHmmkfrPNd5wXMc/AvNYKDs26P1hP/"
           else
-            "$y$j9T$H2M6x83Vk7E25UNXtMHUD1$634z2TKhXck60C/a.ekTTsc5fN1fcsKosx.Mu/i1pF0";
+            "$6$4G0jsFOpNMPy67xF$IMlFKPvMAneGQKTpri7vT6oYMZPql7A0ZAWAIg1VHqVU6ZUYhuhswpRrmXsKesuT8gJ8wUelBWkad8KR0eize0";
           extraGroups = [
             "wheel"
             "video"

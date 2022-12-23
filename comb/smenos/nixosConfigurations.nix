@@ -12,16 +12,12 @@
       cell.nixosSuites.base
       cell.nixosSuites.laptop
       cell.nixosSuites.xmonad
-    ];
-    # ++ [ bee.home.nixosModules.home-manager ] ++ [{
-    #   home-manager.useUserPackages = true;
-    #   home-manager.useGlobalPkgs = true;
-    #   home-manager.users.joseph = {
-    #     imports = [ cell.homeConfigurations.joseph ];
-    #   };
-    # }];
+    ] ++ [ bee.home.nixosModules.home-manager ] ++ [{
+      home-manager.useUserPackages = true;
+      home-manager.useGlobalPkgs = true;
+    }];
     boot = {
-      #kernelPackages = pkgs.linuxPackages_latest;
+      kernelPackages = pkgs.linuxPackages_latest;
       loader = {
         systemd-boot.enable = true;
         systemd-boot.consoleMode = "max";
@@ -38,7 +34,6 @@
       wireless.interfaces = [ "wlp4s0" ];
       nameservers = [ "192.168.1.5" "100.95.211.76" "1.1.1.1" "8.8.8.8" ];
     };
-
     services = {
       pcscd.enable = true;
       udisks2.enable = true;
@@ -104,7 +99,10 @@
 
   # thureos = { config, pkgs, lib, ... }: {
   #   bee.system = "armv7-linux";
-  #   imports = [ cell.nixosSuites.base ];
+  #   imports = [
+  #   cell.nixosSuites.base
+  #   cell.nixosSuites.guardian
+  #   ];
   # };
 
   kerugma = { config, pkgs, lib, ... }: {
