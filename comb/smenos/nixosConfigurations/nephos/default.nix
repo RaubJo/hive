@@ -9,7 +9,8 @@ let
 
     networking.hostName = "nephos";
     services.getty.autologinUser = "kurios";
-    services.nextcloud.config.extraTrustedDomains = [ ];
+    services.nextcloud.config.extraTrustedDomains =
+      [ "192.168.1.115" "100.74.102.53" ];
     system.stateVersion = "23.05";
   };
 in rec {
