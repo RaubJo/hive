@@ -12,6 +12,7 @@
 
       agenix = "nix run github:ryantm/agenix --";
       ytui = "nix run github:gvolpe/ytui-music-nix";
+      colmena = "nix run github:zhaofengli/colmena --";
 
       d = "direnv";
       g = "git";

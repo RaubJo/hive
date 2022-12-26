@@ -14,9 +14,8 @@ in {
     users.users.kurios = {
       isNormalUser = true;
       hashedPassword =
-        "$6$Do5TvmOu.qzB.yAu$4cwwNcMjRKgLgQ4qLzkRHVFkIXaVjJTWVXJGsh.B7YWsW4WCpRCwtgvg60x/2EO1nZyl9bChWnZxtZ1LR9NbW/";
+        "$6$BO.9zW.3miRB4vNH$ixlr4ue0MYnaQbtKRzncjOHg25DFbm3MvjfD4GIC4.12HDCRlzh2B/X6zPtoa4ExjOoCQu8oxtCnSv3vjdBid.";
       extraGroups = [ "wheel" ];
-      password = "pass";
     };
   };
   xmonad = { imports = with nixosProfiles; [ xmonad ]; };
