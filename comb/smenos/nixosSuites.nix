@@ -8,14 +8,16 @@ in {
   };
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };
   ephemeral = { imports = with nixosProfiles; [ zfs zram minify ]; };
-  nc-server = {
+  nc-server = { pkgs, ... }: {
     imports = with nixosProfiles; [ nextcloud ];
     users.mutableUsers = false;
     users.users.kurios = {
       isNormalUser = true;
+      shell = pkgs.fish;
       hashedPassword =
         "$6$BO.9zW.3miRB4vNH$ixlr4ue0MYnaQbtKRzncjOHg25DFbm3MvjfD4GIC4.12HDCRlzh2B/X6zPtoa4ExjOoCQu8oxtCnSv3vjdBid.";
       extraGroups = [ "wheel" ];
+      packages = with pkgs; [ git wget neovim ];
     };
   };
   xmonad = { imports = with nixosProfiles; [ xmonad ]; };
