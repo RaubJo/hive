@@ -7,7 +7,7 @@ let
       useOSProber = true;
     };
 
-    networking.hostName = "tamieion";
+    networking.hostName = "nephos";
     services.getty.autologinUser = "kurios";
     services.nextcloud.config.extraTrustedDomains = [ ];
     system.stateVersion = "23.05";

@@ -232,6 +232,9 @@ in {
   nix = { config, pkgs, ... }: {
     nix = {
       package = pkgs.nixVersions.stable;
+      extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
       settings.auto-optimise-store = true;
       gc = {
         automatic = true;
@@ -270,7 +273,7 @@ in {
 
   plymouth = { config, ... }: { boot.plymouth = { enable = true; }; };
 
-  users = { config, ... }: {
+  users = { config, pkgs, ... }: {
     users = {
       mutableUsers = false;
       users = {
@@ -280,6 +283,7 @@ in {
         };
         joseph = {
           isNormalUser = true;
+          shell = pkgs.fish;
           hashedPassword = if config.networking.hostName == "kerugma" then
             "$6$F88oWiHPI3YmK5Yv$YQgPl6XhNcy5Byw6dLc7KHu4q/pRituimcnPt7/0Q3RGtblDvVIvsFbFWHmmkfrPNd5wXMc/AvNYKDs26P1hP/"
           else

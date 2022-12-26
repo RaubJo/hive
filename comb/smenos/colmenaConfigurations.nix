@@ -11,8 +11,11 @@
   nephos = {
     networking.hostName = "nephos";
     deployment = {
-      allowLocalDeployment = true;
       targetHost = "100.74.102.53";
+      targetPort = 22;
+      targetUser = "joseph";
+      buildOnTarget = false;
+      allowLocalDeployment = false;
     };
     imports = [ cell.nixosConfigurations.nephos ];
   };
