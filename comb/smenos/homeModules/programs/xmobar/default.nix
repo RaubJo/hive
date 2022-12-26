@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nixosConfig, ... }:
 
 {
   programs.xmobar = {
@@ -23,10 +23,8 @@
       , overrideRedirect = True
       , commands = [
                      Run Network "${
-                       if config.bee.system == "aarch64-linux" then
-                         "wlan0"
-                       else
-                         "wlp4s0"
+                       builtins.elemAt
+                       nixosConfig.networking.wireless.interfaces 0
                      }" ["-t", "\xf0aa <tx>kb \xf0ab <rx>kb"] 20
                    , Run Cpu ["-t","\xe266 <total>%",
                               "-L","3","-H","80",

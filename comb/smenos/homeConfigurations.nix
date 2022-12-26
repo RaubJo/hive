@@ -10,7 +10,7 @@ let
 
   home = rec {
     homeDirectory = "/home/${username}";
-    stateVersion = "22.05";
+    stateVersion = "23.05";
     username = "joseph";
     sessionVariables = { EDITOR = "nvim"; };
     keyboard = {
@@ -26,13 +26,11 @@ let
     json.enable = false;
   };
 in {
-  joseph = { pkgs, config, lib, ... }: {
+  joseph = { config, ... }: {
     inherit bee home manual;
-    targets.genericLinux.enable = true;
     imports = with homeSuites;
-      [ ] ++ system ++ shell ++ shellUtils ++ emacs ++ gui ++ xmonad;
+      [ ] ++ system ++ xmonad ++ emacs ++ shell ++ shellUtils;
   };
-
   joseph-arm = { pkgs, config, lib, ... }: {
     bee = {
       system = "aarch64-linux";

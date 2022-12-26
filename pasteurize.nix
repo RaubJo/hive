@@ -125,6 +125,13 @@ let
                 inherit (asserted.bee.pkgs)
                   config; # nixos modules don't load this
               };
+              #  imports = [ ] ++ l.optionals (asserted.bee ? home) [
+              #    asserted.bee.home.nixosModules.home-manager
+              #    {
+              #      home-manager.useGlobalPkgs = true;
+              #      home-manager.useUserPackages = true;
+              #    }
+              #  ];
             })))
           (l.filterAttrs (_: config: config.nixpkgs.system == system))
           (l.mapAttrs (machine: l.nameValuePair "${user}-o-${machine}"))

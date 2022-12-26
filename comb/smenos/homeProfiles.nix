@@ -9,6 +9,7 @@ in {
   # Terminals
   # uxterm
   alacritty = import ./homeModules/programs/alacritty;
+  foot = import ./homeModules/programs/foot;
   # tmux
 
   # Browsers
@@ -18,7 +19,7 @@ in {
 
   # Status Bars
   xmobar = import ./homeModules/programs/xmobar;
-  # waybar = import ./homeModuels/programs/waybar;
+  waybar = import ./homeModules/programs/waybar;
   # polybar
 
   # Screen Lockers
@@ -26,7 +27,7 @@ in {
 
   # Window Managers
   xmonad = import ./homeModules/programs/xmonad;
-  #sway = import ./homeModules/programs/sway;
+  sway = import ./homeModules/programs/sway;
 
   # awesome
   # hyprland
@@ -61,7 +62,6 @@ in {
     colorScheme = nix-colors.colorSchemes.nord;
     home.packages = [ nixpkgs.nix ];
     programs.home-manager.enable = true;
-    nix = { package = nixpkgs.nix; };
   };
 
 }

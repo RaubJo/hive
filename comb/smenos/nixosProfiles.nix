@@ -1,4 +1,5 @@
 let
+
   inherit (inputs) nixpkgs;
   #inherit (cell) customScripts;
   lib = nixpkgs.lib // builtins;
@@ -271,7 +272,7 @@ in {
 
   users = { config, ... }: {
     users = {
-      mutableUsers = true;
+      mutableUsers = false;
       users = {
         root = {
           hashedPassword =
