@@ -7,6 +7,7 @@ let
       cell.nixosSuites.laptop
       cell.nixosSuites.xmonad
     ];
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
       loader = {

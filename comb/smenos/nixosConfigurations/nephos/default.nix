@@ -1,12 +1,12 @@
 { inputs, cell, }:
 let
   init = { config, pkgs, lib, ... }: {
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot.loader.grub = {
       enable = true;
       devices = [ "/dev/sda" ];
       useOSProber = true;
     };
-
     networking.hostName = "nephos";
     services.getty.autologinUser = "kurios";
     services.nextcloud.config.extraTrustedDomains =

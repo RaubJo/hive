@@ -11,14 +11,29 @@
   nephos = {
     networking.hostName = "nephos";
     deployment = {
+      tags = [ "server" ];
       targetHost = "100.74.102.53";
       targetPort = 22;
-      targetUser = "joseph";
+      targetUser = "root";
+      #privilegeEscalationCommand = [ "sudo" ];
       buildOnTarget = false;
       allowLocalDeployment = false;
     };
     imports = [ cell.nixosConfigurations.nephos ];
   };
+
+  # tamieion = {
+  #   networking.hostName = "tamieion";
+  #   deployment = {
+  #     tags = [ "server" ];
+  #     targetHost = "";
+  #     targetPort = 22;
+  #     targetUser = "root";
+  #     buildOnTarget = false;
+  #     allowLocalDeployment = false;
+  #   };
+  #   imports = [ cell.nixosConfigurations.tamieion ];
+  # };
 
   kouphizo = {
     networking.hostName = "kouphizo";
@@ -29,12 +44,12 @@
     imports = [ cell.nixosConfigurations.kouphizo ];
   };
 
-  #   kerugma = {
-  #     networking.hostName = "kerugma";
-  #     deployment = {
-  #       allowLocalDeployment = true;
-  #       targetHost = "100.115.221.114";
-  #     };
-  #     imports = [ cell.nixosConfigurations.kerugma ];
-  #   };
+  kerugma = {
+    networking.hostName = "kerugma";
+    deployment = {
+      allowLocalDeployment = true;
+      targetHost = "100.115.221.114";
+    };
+    imports = [ cell.nixosConfigurations.kerugma ];
+  };
 }
