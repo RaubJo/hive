@@ -5,7 +5,8 @@ let
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.xmonad
+      #cell.nixosSuites.xmonad
+      cell.nixosProfiles.hyprland
     ];
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot = {
@@ -57,6 +58,7 @@ in rec {
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
+    overlays = [ inputs.hyprland.overlays.default ];
   };
   imports = [ bee.home.nixosModules.home-manager init ] ++ [{
     home-manager.useGlobalPkgs = true;

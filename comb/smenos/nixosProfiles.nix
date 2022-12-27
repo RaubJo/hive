@@ -1,6 +1,5 @@
 let
-
-  inherit (inputs) nixpkgs;
+  inherit (inputs) hyprland nixpkgs;
   #inherit (cell) customScripts;
   lib = nixpkgs.lib // builtins;
 in {
@@ -140,6 +139,13 @@ in {
         }];
       };
     };
+  };
+
+  hyprland = {
+    imports = [ hyprland.nixosModules.default ];
+    import = ./hyprland-scripts.nix;
+    programs.hyprland.enable = true;
+    services.xserver.displayManager.defaultSession = "hyprland";
   };
 
   ### Web Services ###

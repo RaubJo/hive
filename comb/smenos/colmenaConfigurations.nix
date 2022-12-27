@@ -47,8 +47,11 @@
   kerugma = {
     networking.hostName = "kerugma";
     deployment = {
-      allowLocalDeployment = true;
       targetHost = "100.115.221.114";
+      targetUser = "root";
+      targetPort = 22;
+      buildOnTarget = false;
+      allowLocalDeployment = true;
     };
     imports = [ cell.nixosConfigurations.kerugma ];
   };

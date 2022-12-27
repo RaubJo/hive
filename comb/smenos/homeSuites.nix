@@ -6,23 +6,9 @@ in {
   sway = with homeProfiles; [ sway foot waybar ];
   emacs = [ homeProfiles.emacs ];
   system = with homeProfiles; [ systemProfile email packages qutebrowser ];
+  gnome = with homeProfiles; [ dconf ];
 
-  joseph = with homeProfiles;
-    [
-      starship
-      fish
-      alacritty
-      exa
-      lf
-      pass
-      git
-      bat
-      feh
-
-      emacs
-      systemProfile
-      email
-      packages
-      qutebrowser
-    ] ++ homeSuites.xmonad;
+  ## NixOS importable Suites ##
+  joseph = with homeSuites;
+    [ ] ++ shell ++ shellUtils ++ system ++ emacs ++ xmonad;
 }

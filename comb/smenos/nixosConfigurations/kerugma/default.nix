@@ -59,5 +59,9 @@ in rec {
   imports = [ bee.home.nixosModules.home-manager init ] ++ [{
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
+    home-manager.users.joseph = {
+      imports = [ ] ++ cell.homeSuites.gnome;
+      home.stateVersion = "23.05";
+    };
   }];
 }

@@ -56,6 +56,7 @@ in {
   email = import ./homeModules/email.nix;
   gui = import ./homeModules/gui.nix;
   packages = import ./homeModules/packages.nix;
+  dconf = import ./homeModules/dconf.nix;
 
   systemProfile = {
     imports = [ nix-colors.homeManagerModule ];
