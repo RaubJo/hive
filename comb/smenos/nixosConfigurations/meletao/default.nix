@@ -4,9 +4,10 @@ let
     imports = [
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
+      cell.nixosSuites.nvidia
       cell.nixosSuites.laptop
-      #cell.nixosSuites.xmonad
-      cell.nixosProfiles.hyprland
+      cell.nixosSuites.xmonad
+      #cell.nixosProfiles.hyprland
     ];
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot = {
@@ -58,9 +59,13 @@ in rec {
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
-    overlays = [ inputs.hyprland.overlays.default ];
+    #overlays = [ inputs.hyprland.overlays.default ];
   };
-  imports = [ bee.home.nixosModules.home-manager init ] ++ [{
+  imports = [
+    #inputs.hyprland.nixosModules.default
+    bee.home.nixosModules.home-manager
+    init
+  ] ++ [{
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {

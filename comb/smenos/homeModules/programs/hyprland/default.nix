@@ -1,8 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
-  hyprland = {
-    programs.hyprland.enable = true;
-    services.xserver.displaymanager.defaultSession = "hyprland";
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemdIntegration = true;
+    disableAutoreload = false;
+    nvidiaPatches = true;
+    recommendedEnvironment = true;
+    extraConfig = null;
   };
 }

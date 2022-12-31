@@ -21,6 +21,11 @@ in {
         userControlled.enable = true;
         userControlled.group = "wheel";
         networks = {
+          "WRT300N-DD" = {
+            #psk = "abcxyz123";
+            pskRaw =
+              "01615c3307d6bc6c8ba8113df877604fc5bfc4bf5c79e9580420e1f9d8fa43c8";
+          };
           FTCNWKS = {
             #psk = "FlesS117";
             pskRaw =
@@ -142,8 +147,7 @@ in {
   };
 
   hyprland = {
-    imports = [ hyprland.nixosModules.default ];
-    import = ./hyprland-scripts.nix;
+    imports = [ ./hyprland-scripts.nix ];
     programs.hyprland.enable = true;
     services.xserver.displayManager.defaultSession = "hyprland";
   };
@@ -286,6 +290,7 @@ in {
       lshw
       git
       neovim
+      brightnessctl
     ];
   };
 

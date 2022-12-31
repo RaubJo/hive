@@ -4,11 +4,18 @@ in {
   shellUtils = with homeProfiles; [ exa lf pass git bat feh ];
   xmonad = with homeProfiles; [ xmonad xmobar rofi gui ];
   sway = with homeProfiles; [ sway foot waybar ];
+  hyprland = with homeProfiles; [ hyprland ];
   emacs = [ homeProfiles.emacs ];
-  system = with homeProfiles; [ systemProfile email packages qutebrowser ];
+  system = with homeProfiles; [
+    systemProfile
+    keyboardLayouts
+    email
+    packages
+    qutebrowser
+  ];
   gnome = with homeProfiles; [ dconf ];
 
   ## NixOS importable Suites ##
   joseph = with homeSuites;
-    [ ] ++ shell ++ shellUtils ++ system ++ emacs ++ xmonad;
+    [ ] ++ shell ++ shellUtils ++ system ++ emacs ++ hyprland;
 }

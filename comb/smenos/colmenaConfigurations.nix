@@ -22,18 +22,18 @@
     imports = [ cell.nixosConfigurations.nephos ];
   };
 
-  # tamieion = {
-  #   networking.hostName = "tamieion";
-  #   deployment = {
-  #     tags = [ "server" ];
-  #     targetHost = "";
-  #     targetPort = 22;
-  #     targetUser = "root";
-  #     buildOnTarget = false;
-  #     allowLocalDeployment = false;
-  #   };
-  #   imports = [ cell.nixosConfigurations.tamieion ];
-  # };
+  tamieion = {
+    networking.hostName = "tamieion";
+    deployment = {
+      tags = [ "server" ];
+      targetHost = "100.67.46.42";
+      targetPort = 22;
+      targetUser = "root";
+      buildOnTarget = false;
+      allowLocalDeployment = false;
+    };
+    imports = [ cell.nixosConfigurations.tamieion ];
+  };
 
   kouphizo = {
     networking.hostName = "kouphizo";

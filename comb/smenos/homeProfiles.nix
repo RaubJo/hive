@@ -1,10 +1,9 @@
-let inherit (inputs) nix-colors nixpkgs;
+let inherit (inputs) nix-colors nixpkgs hyprland;
 in {
 
   # Shells and Prompts
   starship = import ./homeModules/programs/starship;
   fish = import ./homeModules/programs/fish;
-  # bash
 
   # Terminals
   # uxterm
@@ -15,7 +14,7 @@ in {
   # Browsers
   qutebrowser = import ./homeModules/programs/qutebrowser;
   #  firefox
-  #  google-chrome ? Why would I ?
+  #  google-chrome Why would I ?
 
   # Status Bars
   xmobar = import ./homeModules/programs/xmobar;
@@ -28,9 +27,8 @@ in {
   # Window Managers
   xmonad = import ./homeModules/programs/xmonad;
   sway = import ./homeModules/programs/sway;
-
+  hyprland = import ./homeModules/programs/hyprland;
   # awesome
-  # hyprland
 
   # Editors
   emacs = import ./homeModules/programs/emacs;
@@ -51,18 +49,29 @@ in {
 
   # Launcher
   rofi = import ./homeModules/programs/rofi;
+  # wofi
+  # nwgmenu
 
   # Misc
   email = import ./homeModules/email.nix;
   gui = import ./homeModules/gui.nix;
   packages = import ./homeModules/packages.nix;
   dconf = import ./homeModules/dconf.nix;
+  keyboardLayouts = import ./homeModules/keyboard.nix;
 
   systemProfile = {
-    imports = [ nix-colors.homeManagerModule ];
+    imports =
+      [ nix-colors.homeManagerModule hyprland.homeManagerModules.default ];
     colorScheme = nix-colors.colorSchemes.nord;
     home.packages = [ nixpkgs.nix ];
     programs.home-manager.enable = true;
+  };
+
+  home = rec {
+    homeDirectory = "/home/${username}";
+    stateVersion = "23.05";
+    username = "joseph";
+    sessionVariables = { EDITOR = "nvim"; };
   };
 
 }

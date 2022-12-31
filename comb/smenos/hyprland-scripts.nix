@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   wrappedhl = pkgs.writeShellScriptBin "wrappedhl" ''
     #!/usr/bin/env bash
