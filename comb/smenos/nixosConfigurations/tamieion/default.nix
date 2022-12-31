@@ -9,7 +9,8 @@ let
 
     networking.hostName = "tamieion";
     services.getty.autologinUser = "kurios";
-    services.nextcloud.config.extraTrustedDomains = [ ];
+    services.nextcloud.config.extraTrustedDomains =
+      [ "192.168.0.14" "100.67.46.42" ];
     system.stateVersion = "23.05";
   };
 in rec {
