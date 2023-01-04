@@ -109,7 +109,10 @@ in {
       layout = "us";
       libinput.enable = true;
       displayManager.gdm.enable = true;
+      displayManager.autologin.enable = true;
+      displaymanager.autologin.user = "joseph";
       desktopManager.gnome.enable = true;
+
     };
   };
 
@@ -146,10 +149,42 @@ in {
     };
   };
 
+  sway = { pkgs, ... }: {
+    programs.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [
+        xwayland
+        gsettings_desktop_schemas
+        autotile
+      ];
+    };
+    services.xserver.displayManager = {
+      gdm.enable = true;
+      gdm.wayland = true;
+      defaultSession = "sway";
+    };
+  };
+
+  hypr = {
+    services.xserver.enable = true;
+    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.displayManager.session = [{
+      manage = "desktop";
+      name = "Hypr";
+      start = "exec Hypr";
+    }];
+    services.xserver.windowManager.hypr.enable = true;
+  };
+
   hyprland = {
-    imports = [ ./hyprland-scripts.nix ];
+    imports = [ ./hyprland-scripts.nix inputs.hyprland.nixosModules.default ];
     programs.hyprland.enable = true;
+    services.xserver.enable = true;
+    services.xserver.displayManager.gdm.enable = true;
+    services.xserver.displayManager.gdm.wayland = true;
     services.xserver.displayManager.defaultSession = "hyprland";
+    programs.waybar.enable = true;
   };
 
   ### Web Services ###
@@ -322,6 +357,14 @@ in {
         };
       };
     };
+    # This eliminates the need to type my passwd for sudo
+    security.sudo.extraRules = [{
+      users = [ "joseph" ];
+      commands = [{
+        command = "ALL";
+        options = [ "SETENV" "NOPASSWD" ];
+      }];
+    }];
   };
 
   kurios = { config, pkgs, ... }: {

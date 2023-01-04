@@ -28,6 +28,7 @@
         "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       np =
         "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
+      ho = "https://mipmip.github.io/home-manager-option-search/?{}";
     };
     settings = {
       content = {

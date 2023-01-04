@@ -17,6 +17,8 @@ in {
   ephemeral = { imports = with nixosProfiles; [ zfs zram minify ]; };
   nc-server = { imports = with nixosProfiles; [ nextcloud kurios ]; };
   xmonad = { imports = with nixosProfiles; [ xmonad ]; };
+  hypr = { imports = with nixosProfiles; [ hypr ]; };
+  hyprland = { imports = with nixosProfiles; [ hyprland ]; };
   kde = { imports = with nixosProfiles; [ kde ]; };
   guardian = { imports = with nixosProfiles; [ ]; };
   tablet = {

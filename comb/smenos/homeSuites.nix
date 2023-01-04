@@ -17,5 +17,5 @@ in {
 
   ## NixOS importable Suites ##
   joseph = with homeSuites;
-    [ ] ++ shell ++ shellUtils ++ system ++ emacs ++ hyprland;
+    [ ] ++ shell ++ shellUtils ++ system ++ emacs ++ xmonad;
 }
