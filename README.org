@@ -40,7 +40,6 @@ If you are looking at this repo, I don't think I need to explain what [[https://
 | Window Manager  | Xmonad              | Xmonad              | Gnome           | -      | -       |
 | Compositor      | Picom               | Picom               |                 | -      | -       |
 | Bar             | Xmobar              | Xmobar              |                 | -      | -       |
-| Hotkeys         | Xmonad              | Xmonad              |                 | -      | -       |
 | Launcher        | Rofi                | Rofi                |                 | -      | -       |
 | Theme           | Nord                | Nord                |                 | -      | -       |
 | Notifications   | Dunst               | Dunst               |                 | -      | -       |
@@ -52,7 +51,6 @@ If you are looking at this repo, I don't think I need to explain what [[https://
 This configuration uses NixOs [[https://nixos.wiki/wiki/Flakes][Flakes]] and the [[https://github.com/divnix/hive][Hive]] library/framework.
 
 It is well worth your time to take a deep dive into nix. Studying the documentation and exploring in the nepl (nix repl). The learning curve is steep, but you already knew that. Go ahead and help yourself, instead of bumping around in the dark, turn on the lights.
-g
 
 ** Hive
 *** What is hive?
@@ -77,20 +75,20 @@ When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I bega
 - Microsoft Surface Go 2
 - Used when teaching
 ** Suites
-These are collections of profiles.
+These are groups of profiles that can be referenced at once, instead of separately.
 ** Profiles
-These are applications configured for use in NixOs
+These are application specific configurations that can be referenced individually or integrated through suites.
 * Cool Nix projects
 ** Implemented in this flake
 - [[https://github.com/nix-community/home-manager][Home-manager]]
 - [[https://github.com/zhaofengli/colmena][Colmena]]
-- [[https://github.com/nix-community/disko][Disko]]
-- [[https://github.com/numtide/devshell][Devshell]]
+- [[https://github.com/nix-community/disko][Disko]] WIP
+- [[https://github.com/numtide/devshell][Devshell]] I don't have any devshells declared, but it is there should I want to. (It doesn't make a lot of sense because I am the only one developing this flake.)
 - [[https://github.com/misterio77/nix-colors][Nix-colors]]
 - [[https://github.com/nix-community/nixos-hardware][Nixos-hardware]]
 - [[https://github.com/numtide/flake-utils][Flake-utils]]
 - [[https://github.com/gytis-ivaskevicius/flake-utils-plus][Flake-utils-plus]]
-- [[https://github.com/ryantm/agenix][Agenix]]
+- [[https://github.com/ryantm/agenix][Agenix]] WIP
 ** Others
 ***  Deployment
 - [[https://github.com/serokell/deploy-rs][Deploy-rs]]

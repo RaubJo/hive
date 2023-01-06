@@ -109,16 +109,6 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 
 
 <tr>
-<td class="org-left">Hotkeys</td>
-<td class="org-left">Xmonad</td>
-<td class="org-left">Xmonad</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">-</td>
-<td class="org-left">-</td>
-</tr>
-
-
-<tr>
 <td class="org-left">Launcher</td>
 <td class="org-left">Rofi</td>
 <td class="org-left">Rofi</td>
@@ -239,12 +229,12 @@ When I came across Divnix and [Digga](https://github.com/divnix/digga), I began 
 
 ## Suites
 
-These are collections of profiles.
+These are groups of profiles that can be referenced at once, instead of separately.
 
 
 ## Profiles
 
-These are applications configured for use in NixOs
+These are application specific configurations that can be referenced individually or integrated through suites.
 
 
 # Cool Nix projects
@@ -254,13 +244,13 @@ These are applications configured for use in NixOs
 
 -   [Home-manager](https://github.com/nix-community/home-manager)
 -   [Colmena](https://github.com/zhaofengli/colmena)
--   [Disko](https://github.com/nix-community/disko)
--   [Devshell](https://github.com/numtide/devshell)
+-   [Disko](https://github.com/nix-community/disko) WIP
+-   [Devshell](https://github.com/numtide/devshell) I don&rsquo;t have any devshells declared, but it is there should I want to. (It doesn&rsquo;t make a lot of sense because I am the only one developing this flake.)
 -   [Nix-colors](https://github.com/misterio77/nix-colors)
 -   [Nixos-hardware](https://github.com/nix-community/nixos-hardware)
 -   [Flake-utils](https://github.com/numtide/flake-utils)
 -   [Flake-utils-plus](https://github.com/gytis-ivaskevicius/flake-utils-plus)
--   [Agenix](https://github.com/ryantm/agenix)
+-   [Agenix](https://github.com/ryantm/agenix) WIP
 
 
 ## Others

@@ -19,16 +19,16 @@ in {
   # Status Bars
   xmobar = import ./homeModules/programs/xmobar;
   waybar = import ./homeModules/programs/waybar;
-  # polybar
+  polybar = import ./homeModules/programs/polybar;
 
   # Screen Lockers
   # swaylock = import ./homeModules/programs/swaylock;
 
   # Window Managers
   xmonad = import ./homeModules/programs/xmonad;
+  awesome = import ./homeModules/programs/awesome;
   sway = import ./homeModules/programs/sway;
   hyprland = import ./homeModules/programs/hyprland;
-  # awesome
 
   # Editors
   emacs = import ./homeModules/programs/emacs;

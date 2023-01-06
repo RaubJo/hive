@@ -4,7 +4,7 @@ in {
   shellUtils = with homeProfiles; [ exa lf pass git bat feh ];
   xmonad = with homeProfiles; [ xmonad xmobar rofi gui ];
   sway = with homeProfiles; [ sway foot waybar ];
-  hyprland = with homeProfiles; [ hyprland ];
+  hyprland = with homeProfiles; [ hyprland waybar gui ];
   emacs = [ homeProfiles.emacs ];
   system = with homeProfiles; [
     systemProfile

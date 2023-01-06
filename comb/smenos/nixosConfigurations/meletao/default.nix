@@ -7,7 +7,6 @@ let
       cell.nixosSuites.nvidia
       cell.nixosSuites.laptop
       cell.nixosSuites.xmonad
-      cell.nixosSuites.hypr
       #cell.nixosSuites.hyprland
     ];
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

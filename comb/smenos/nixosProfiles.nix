@@ -150,6 +150,7 @@ in {
   };
 
   sway = { pkgs, ... }: {
+    services.xserver.videoDrivers = [ "nouveau" ];
     programs.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
@@ -157,6 +158,7 @@ in {
         xwayland
         gsettings_desktop_schemas
         autotile
+        wev
       ];
     };
     services.xserver.displayManager = {
@@ -166,25 +168,16 @@ in {
     };
   };
 
-  hypr = {
-    services.xserver.enable = true;
-    services.xserver.displayManager.lightdm.enable = true;
-    services.xserver.displayManager.session = [{
-      manage = "desktop";
-      name = "Hypr";
-      start = "exec Hypr";
-    }];
-    services.xserver.windowManager.hypr.enable = true;
-  };
-
-  hyprland = {
+  hyprland = { pkgs, ... }: {
     imports = [ ./hyprland-scripts.nix inputs.hyprland.nixosModules.default ];
+    services.xserver.videoDrivers = [ "nvidia" ];
     programs.hyprland.enable = true;
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.displayManager.gdm.wayland = true;
     services.xserver.displayManager.defaultSession = "hyprland";
     programs.waybar.enable = true;
+    environment.systemPackages = with pkgs; [ wev ];
   };
 
   ### Web Services ###
@@ -293,6 +286,8 @@ in {
     imports = [ ./nvidiaScripts.nix ];
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       prime.sync.enable = true;
       prime = {
         intelBusId = "PCI:0:2:0";
@@ -326,6 +321,8 @@ in {
       git
       neovim
       brightnessctl
+      acpi
+      firefox
     ];
   };
 
