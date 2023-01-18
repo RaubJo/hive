@@ -94,7 +94,6 @@ in {
 
   nm-networks = { config, ... }: {
     networking = {
-      wireless.enable = false;
       networkmanager = {
         enable = true;
         # https://unix.stackexchange.com/questions/22367/where-are-networkmanagers-wifi-settings-stored
@@ -109,8 +108,8 @@ in {
       layout = "us";
       libinput.enable = true;
       displayManager.gdm.enable = true;
-      displayManager.autologin.enable = true;
-      displaymanager.autologin.user = "joseph";
+      displayManager.autoLogin.enable = true;
+      displayManager.autoLogin.user = "joseph";
       desktopManager.gnome.enable = true;
 
     };
@@ -131,6 +130,16 @@ in {
     };
   };
 
+  awesome = { config, ... }: {
+    services.xserver = {
+      enable = true;
+      layout = "us";
+      libinput.enable = true;
+      displayManager = { lightdm.enable = true; };
+      windowManager.awesome = { enable = true; };
+    };
+  };
+
   xmonad = { config, ... }: {
     imports = [ ./xmo-scripts.nix ];
     services.xserver = {
@@ -139,28 +148,43 @@ in {
       libinput.enable = true;
       displayManager = {
         lightdm.enable = true;
-        defaultSession = "myXSession";
-        session = [{
-          manage = "desktop";
-          name = "myXSession";
-          start = "exec $HOME/.xsession";
-        }];
+        lightdm.greeters.slick.enable = true;
+      };
+      windowManager.xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
       };
     };
   };
 
+  laptop-resolutions = { config, ... }: {
+    hardware.video.hidpi.enable = true;
+    services.xserver = {
+      dpi = 96;
+      resolutions = [{
+        x = 1920;
+        y = 1080;
+      }];
+      xrandrHeads = [{
+        output = "eDP1-1";
+        primary = true;
+      }];
+    };
+  };
+
   sway = { pkgs, ... }: {
-    services.xserver.videoDrivers = [ "nouveau" ];
+    services.xserver.videoDrivers = [ "nvidia" ];
     programs.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         xwayland
-        gsettings_desktop_schemas
-        autotile
+        gsettings-desktop-schemas
+        autotiling
         wev
       ];
     };
+    programs.waybar.enable = true;
     services.xserver.displayManager = {
       gdm.enable = true;
       gdm.wayland = true;
@@ -335,6 +359,9 @@ in {
         root = {
           hashedPassword =
             "$6$tNyYLYGxyzydAdhD$0EmLRGrPupIGpD4pJPZrDkZdpZ6OVEVgGv2lTiebKAlzXZbRi3kWbfQwCjXQbZfWBz7/lv8wr7IB0JpZu4uUu1";
+          openssh.authorizedKeys.keys = [
+            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuAkGqx5yNT2+ZO7SRGfNVxh+4qb3YhEBsntTAMpdLjrmJTAtgDqdigjXosuAlHVUVjTQeWLQbk1kfRxaI4VA9Nj9uROTY3lhlwNtvhLxYumwRrKZ2j95lY8nAtaDSNHfg8MPMkVHXGi+8imSZEGyKx4p4V65RrOvMTYFP144OFdoIln1AjWuUf2/c4oBS0MESz0gECzexy4//gZv38GDyug0N/7vUkfl5lceIRQjIAtRgxM7qdifoFJCRHCdc1PP7wXfNMpAcYNd0rWjXQNrbQrvTG/RJwoN4Y/G0ZVKtQbLfpXD3QovFl7CcymX9/roJGfKdkHu4VfHSdZ5WZbuJwVsBEDwMpELz9uoLYEeYNu/qHPdl11STsKl9F9K7rkkF68k2iJxv+MRsCQQojyzryQHoVFnV3FwGg69gemVKyMExKfpDR0zBfIbw4Ky7m3PeMzg9dTytMCx/fK4iuNvXjiu2tX6jjsVnWcpqLwCj3BiLkA2Lia1rdRYXzofxgp8= joseph@meletao"
+          ];
         };
         joseph = {
           isNormalUser = true;
@@ -354,7 +381,7 @@ in {
         };
       };
     };
-    # This eliminates the need to type my passwd for sudo
+    # This eliminates the need to type my password for sudo
     security.sudo.extraRules = [{
       users = [ "joseph" ];
       commands = [{

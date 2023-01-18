@@ -3,8 +3,7 @@
 {
   xsession.windowManager.awesome = {
     enable = true;
-    #package;
+    package = pkgs.awesome;
     luaModules = with pkgs.luaPackages; [ luarocks ];
-
   };
 }

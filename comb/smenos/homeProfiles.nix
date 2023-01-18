@@ -1,4 +1,4 @@
-let inherit (inputs) nix-colors nixpkgs hyprland;
+let inherit (inputs) nix-colors nixpkgs hyprland f2k doom-emacs;
 in {
 
   # Shells and Prompts
@@ -33,7 +33,7 @@ in {
   # Editors
   emacs = import ./homeModules/programs/emacs;
   neovim = import ./homeModules/programs/neovim;
-  #  doom-emacs = import ./homeModules/programs/doom-emacs;
+  doom-emacs = import ./homeModules/programs/doom-emacs;
 
   # Utils
   exa = import ./homeModules/programs/exa;
@@ -46,6 +46,7 @@ in {
 
   # Services
   services = import ./homeModules/services.nix;
+  picom = import ./homeModules/picom.nix;
 
   # Launcher
   rofi = import ./homeModules/programs/rofi;
@@ -58,6 +59,7 @@ in {
   packages = import ./homeModules/packages.nix;
   dconf = import ./homeModules/dconf.nix;
   keyboardLayouts = import ./homeModules/keyboard.nix;
+  ledger = import ./homeModules/programs/ledger;
 
   systemProfile = {
     imports =

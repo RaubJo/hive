@@ -28,7 +28,8 @@ let
       wireless.interfaces = [ "wlp4s0" ];
       nameservers = [ "192.168.1.5" "100.95.211.76" "1.1.1.1" "8.8.8.8" ];
     };
-    environment.systemPackages = with pkgs; [ arandr ];
+    services.xserver.displayManager.defaultSession = "none+xmonad";
+    environment.systemPackages = with pkgs; [ arandr picom-dccsillag ];
     services = {
       pcscd.enable = true;
       udisks2.enable = true;
@@ -59,7 +60,8 @@ in rec {
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
-    overlays = [ inputs.hyprland.overlays.default ];
+    overlays =
+      [ inputs.hyprland.overlays.default inputs.f2k.overlays.compositors ];
   };
   imports = [ bee.home.nixosModules.home-manager init ] ++ [{
     home-manager.useGlobalPkgs = true;

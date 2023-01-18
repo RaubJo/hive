@@ -53,7 +53,7 @@
     sqlite
 
     # 3D printing
-    #prusa-slicer
+    prusa-slicer
     openscad
     freecad
 
@@ -69,7 +69,6 @@
     pdfsam-basic
     font-manager
     mononoki
-    luakit
 
     # DE
     conky

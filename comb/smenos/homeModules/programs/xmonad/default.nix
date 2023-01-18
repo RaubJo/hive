@@ -47,6 +47,8 @@
         import XMonad.Layout.TwoPane (TwoPane(..))
         import XMonad.Layout.Tabbed (simpleTabbed)
         import XMonad.Layout.Named
+        import XMonad.Layout.Spacing
+
         -- Modifiers
         import XMonad.Layout.Magnifier as Mag
 
@@ -171,7 +173,6 @@
         myKeys =
                 -- KB_GROUP Xmonad
                 [ ("M-C-q", io (exitSuccess))
-                , ("M-C-r", spawn (myTerminal ++ " -t hms -e ~/.scripts/hms.sh"))
                 -- KB_GROUP Helps
                 , ("M-s s", spawn "~/.scripts/show_keybinds.sh")
                 , ("M-s r", spawn "~/.scripts/ranger_keybinds.sh")
@@ -253,7 +254,7 @@
             ]
 
         -- Layouts: -------------------------------------------------------------
-        myLayout = avoidStruts $ magnifierOff $ threeCol ||| threeColMid ||| tabbed ||| tall ||| Mirror tall ||| noBorders Full
+        myLayout = smartSpacing 5 $ avoidStruts $ magnifierOff $ threeCol ||| threeColMid ||| tabbed ||| tall ||| Mirror tall ||| noBorders Full
           where
              -- default tiling algorithm partitions the screen into two panes
              tall = named "T" $ Tall nmaster delta ratio
@@ -278,7 +279,7 @@
             [ className =? "MPlayer"                --> doFloat
             , className =? "Yad"                    --> doCenterFloat
             , className =? "Dialog"                 --> doCenterFloat
-            , className =? "balena-etcher-electron" --> doFloat
+            , className =? "balena-etcher-electron" --> doCenterFloat
             , title     =? "scratchpad"             --> doCenterFloat
             , title     =? "hms"                    --> doCenterFloat
             , title     =? "system-update"          --> doCenterFloat
@@ -302,10 +303,10 @@
         -- Startup hook: -------------------------------------------------------
         myStartupHook = do
                 spawnOnce "autorandr -c --force"
-                spawnOnce "picom &"
-                spawnOnce "udiskie &"
+                spawnOnce "picom --animations --animation-for-open-window zoom --xrender-sync-fence --corner-radius 10 &"
                 spawnOnce "feh --randomize --bg-scale ~/.wallpapers/"
                 spawnOnce "/usr/bin/env emacs --daemon &"
+                spawnOnce "udiskie &"
 
         -- Now run xmonad with all the defaults we set up. ---------------------
 

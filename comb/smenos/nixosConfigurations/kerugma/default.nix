@@ -27,6 +27,7 @@ let
     };
 
     environment.systemPackages = with pkgs; [
+      okular
       usbutils
       udiskie
       neovim

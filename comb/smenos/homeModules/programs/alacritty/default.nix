@@ -11,8 +11,8 @@
         };
         opacity = 0.9;
         padding = {
-          x = 0;
-          y = 0;
+          x = 5;
+          y = 5;
         };
         decorations = "full";
         dynamic_title = false;

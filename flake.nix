@@ -3,7 +3,6 @@
 
   inputs.std.url = "github:divnix/std";
   inputs.std.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.std.inputs.mdbook-kroki-preprocessor.follows = "std/blank";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
@@ -31,6 +30,12 @@
 
     hyprland.url = "github:hyprwm/hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
+
+    f2k.url = "github:raubjo/f2k";
+    f2k.inputs.nixpkgs.follows = "nixpkgs";
+
+    doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # nixpkgs & home-manager
