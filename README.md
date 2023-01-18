@@ -70,8 +70,8 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 
 <tr>
 <td class="org-left">Desktop Manager</td>
-<td class="org-left">myXSession</td>
-<td class="org-left">myXSession</td>
+<td class="org-left">lightdm-slick</td>
+<td class="org-left">lightdm-slick</td>
 <td class="org-left">Gnome (Wayland)</td>
 <td class="org-left">-</td>
 <td class="org-left">-</td>
@@ -90,8 +90,8 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 
 <tr>
 <td class="org-left">Compositor</td>
-<td class="org-left">Picom</td>
-<td class="org-left">Picom</td>
+<td class="org-left">Picom-dccsillag</td>
+<td class="org-left">Picom-dccsillag</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">-</td>
 <td class="org-left">-</td>

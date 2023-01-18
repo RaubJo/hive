@@ -36,9 +36,9 @@ If you are looking at this repo, I don't think I need to explain what [[https://
 * System Component Overview
 |                 | Meletao             | Kouphizo            | Kerugma         | Nephos | Thureos |
 | Shell           | Fish                | Fish                | Fish            | Bash   | Bash    |
-| Desktop Manager | myXSession          | myXSession          | Gnome (Wayland) | -      | -       |
+| Desktop Manager | lightdm-slick       | lightdm-slick       | Gnome (Wayland) | -      | -       |
 | Window Manager  | Xmonad              | Xmonad              | Gnome           | -      | -       |
-| Compositor      | Picom               | Picom               |                 | -      | -       |
+| Compositor      | Picom-dccsillag     | Picom-dccsillag     |                 | -      | -       |
 | Bar             | Xmobar              | Xmobar              |                 | -      | -       |
 | Launcher        | Rofi                | Rofi                |                 | -      | -       |
 | Theme           | Nord                | Nord                |                 | -      | -       |
