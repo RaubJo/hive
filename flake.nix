@@ -31,11 +31,14 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
 
-    f2k.url = "github:raubjo/f2k";
-    f2k.inputs.nixpkgs.follows = "nixpkgs";
-
     doom-emacs.url = "github:nix-community/nix-doom-emacs";
     doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
+    ragenix.url = "github:yaxitech/ragenix";
+    ragenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # nixpkgs & home-manager

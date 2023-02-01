@@ -73,7 +73,7 @@
         myFileBrowser = "pcmanfm"
 
         myBorderWidth :: Dimension
-        myBorderWidth = 1
+        myBorderWidth = 0
 
         myNormalBorderColor :: String
         myNormalBorderColor = "#2e3440"
@@ -302,11 +302,8 @@
 
         -- Startup hook: -------------------------------------------------------
         myStartupHook = do
-                spawnOnce "autorandr -c --force"
-                spawnOnce "picom --animations --animation-for-open-window zoom --xrender-sync-fence --corner-radius 10 &"
-                spawnOnce "feh --randomize --bg-scale ~/.wallpapers/"
-                spawnOnce "/usr/bin/env emacs --daemon &"
                 spawnOnce "udiskie &"
+                spawnOnce "feh --randomize --bg-scale ~/.wallpapers/"
 
         -- Now run xmonad with all the defaults we set up. ---------------------
 

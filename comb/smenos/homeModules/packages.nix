@@ -19,6 +19,7 @@
     ranger
     feh
     nerdfonts
+    profont
 
     # CLI Fun
     neofetch
@@ -108,8 +109,7 @@
     ffmpeg
     cdparanoia
     zip
-    handbrake
-    libmkv
+    makemkv
     lsdvd
     libdvdcss
     gnuplot

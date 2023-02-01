@@ -24,15 +24,15 @@
 
       font = {
         normal = {
-          family = "FiraCode Nerd Font";
+          family = "SauceCodePro Nerd Font";
           style = "Regular";
         };
         bold = {
-          family = "FiraCode Nerd Font";
+          family = "SauceCodePro Nerd Font";
           style = "Bold";
         };
         italic = {
-          family = "FiraCode Nerd Font";
+          family = "SauceCodePro Nerd Font";
           style = "Italic";
         };
         size = 9;

@@ -17,6 +17,7 @@ in {
       printing
       fonts
       laptop-resolutions
+      autorandr
     ];
   };
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };

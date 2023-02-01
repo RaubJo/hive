@@ -1,9 +1,10 @@
 {
-  meletao = {
+  meletao = { config, ... }: {
     networking.hostName = "meletao";
     deployment = {
       allowLocalDeployment = true;
       targetHost = null;
+      keys = { test_password = { keyFile = ./secrets/test_password.txt; }; };
     };
     imports = [ cell.nixosConfigurations.meletao ];
   };

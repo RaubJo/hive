@@ -31,6 +31,10 @@
       ho = "https://mipmip.github.io/home-manager-option-search/?{}";
     };
     settings = {
+      fonts = {
+        default_family = "SauceCodePro Nerd Font";
+        default_size = "7pt";
+      };
       content = {
         autoplay = false;
         pdfjs = false;
@@ -50,7 +54,7 @@
         prefers_reduced_motion = true;
       };
       completion.height = "25%";
-      downloads = { remove_finished = 60 * 1000; };
+      downloads = { remove_finished = 10 * 1000; };
       tabs = {
         favicons.show = "never";
         last_close = "close";

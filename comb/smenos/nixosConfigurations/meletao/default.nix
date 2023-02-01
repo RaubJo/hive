@@ -29,7 +29,7 @@ let
       nameservers = [ "192.168.1.5" "100.95.211.76" "1.1.1.1" "8.8.8.8" ];
     };
     services.xserver.displayManager.defaultSession = "none+xmonad";
-    environment.systemPackages = with pkgs; [ arandr picom-dccsillag ];
+    environment.systemPackages = with pkgs; [ arandr ];
     services = {
       pcscd.enable = true;
       udisks2.enable = true;
@@ -60,10 +60,13 @@ in rec {
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
-    overlays =
-      [ inputs.hyprland.overlays.default inputs.f2k.overlays.compositors ];
+    overlays = [ inputs.hyprland.overlays.default ];
   };
-  imports = [ bee.home.nixosModules.home-manager init ] ++ [{
+  imports = [
+    bee.home.nixosModules.home-manager
+    init
+    #inputs.agenix.nixosModules.default
+  ] ++ [{
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {

@@ -4,7 +4,7 @@
   programs.xmobar = {
     enable = true;
     extraConfig = ''
-       Config { font = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=true:hinting=true"
+       Config { font = "xft:SauceCode Pro Nerd Font:weight=bold:pixelsize=12:antialias=true:hinting=true"
       --, additionalFonts = [ "xft:Mononoki Nerd Font:pixelsize=11:weight=bold:antialias=true:hinting=true" ]
       , borderColor = "black"
       , border = TopB
