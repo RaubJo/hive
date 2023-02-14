@@ -7,6 +7,7 @@ let
       cell.nixosSuites.laptop
       cell.nixosSuites.xmonad
     ];
+    boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
       hostName = "kouphizo";
       interfaces.wlan0.useDHCP = true;
