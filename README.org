@@ -78,6 +78,9 @@ When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I bega
 These are groups of profiles that can be referenced at once, instead of separately.
 ** Profiles
 These are application specific configurations that can be referenced individually or integrated through suites.
+* Development Environments
+** PHP
+** Python
 * Cool Nix projects
 ** Implemented in this flake
 - [[https://github.com/nix-community/home-manager][Home-manager]]

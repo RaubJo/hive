@@ -33,7 +33,7 @@
     settings = {
       fonts = {
         default_family = "SauceCodePro Nerd Font";
-        default_size = "7pt";
+        default_size = "10pt";
       };
       content = {
         autoplay = false;

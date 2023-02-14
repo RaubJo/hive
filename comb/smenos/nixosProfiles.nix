@@ -262,11 +262,10 @@ in {
   fonts = { config, pkgs, ... }: {
     fonts = {
       fonts = with pkgs; [
-        nerdfonts
-        hack-font
-        camingo-code
-        anonymousPro
+        (nerdfonts.override { fonts = [ "SourceCodePro" "Mononoki" ]; })
         noto-fonts
+        noto-fonts-emoji
+        mplus-outline-fonts.githubRelease
         liberation_ttf
         dejavu_fonts
       ];
@@ -381,18 +380,13 @@ in {
             "$6$4G0jsFOpNMPy67xF$IMlFKPvMAneGQKTpri7vT6oYMZPql7A0ZAWAIg1VHqVU6ZUYhuhswpRrmXsKesuT8gJ8wUelBWkad8KR0eize0";
           extraGroups = [
             "wheel"
+            "mysql"
             "video"
             "dialout"
             "libvirtd"
             "networkmanager"
             "surface-control"
           ];
-        };
-        test = {
-          isNormalUser = true;
-          shell = pkgs.bash;
-          passwordFile = "/run/keys/test_password";
-          extraGroups = [ "wheel" ];
         };
       };
     };
@@ -451,10 +445,15 @@ in {
 
   # Sytem Services #
 
-  autorandr = { config, ... }: {
+  autorandr = { config, pkgs, ... }: {
     services.autorandr = {
       enable = true;
       #defaultTarget = "mobile";
+      #      hooks.postswitch = {
+      #        "notify" = "";
+      #        "change-background" =
+      #          "${pkgs.feh}/bin/feh --randomize --bg-fill /home/${config.user}/.wallpapers/";
+      #      };
       profiles = {
         "mobile" = {
           fingerprint = {
@@ -503,6 +502,22 @@ in {
     };
   };
 
+  gpg = {
+    programs.gnupg.agent = {
+      enable = true;
+      pinentryFlavor = "gtk2";
+      enableSSHSupport = true;
+    };
+  };
+
+  mysql = { config, pkgs, ... }: {
+    services.mysql = {
+      enable = true;
+      package = pkgs.mysql80;
+      group = "mysql";
+    };
+  };
+
   ssh = { config, ... }: { services.openssh.enable = true; };
 
   tailscale = { config, ... }: {
@@ -540,6 +555,16 @@ in {
           disableWhileTyping = true;
         };
       };
+    };
+  };
+
+  thinkpad-dock = { config, pkgs, ... }: {
+    services.udev = {
+      enable = true;
+      extraRules = ''
+        SUBSYSTEM=="usb", ACTION=="add", ATTRS{idProduct}=="1010", ATTRS{idVendor}=="17ef", ATTRS{bcdDevice}=="5040", RUN+="${pkgs.autorandr} --force -l docked"
+        SUBSYSTEM=="usb", ACTION=="remove", ATTRS{idProduct}=="1010", ATTRS{idVendor}=="17ef", ATTRS{bcdDevice}=="5040", RUN+="${pkgs.autorandr} --force -l mobile"
+      '';
     };
   };
 

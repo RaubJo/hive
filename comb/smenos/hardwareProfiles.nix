@@ -65,34 +65,20 @@
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ ];
     boot.extraModulePackages = [ ];
-    networking.hostId = "1c3833fb";
     fileSystems = {
       "/" = {
-        device = "rpool/ephemeral/root";
-        fsType = "zfs";
-      };
-      "/nix" = {
-        device = "rpool/ephemeral/nix";
-        fsType = "zfs";
-      };
-      "/home" = {
-        device = "rpool/persistent/home";
-        fsType = "zfs";
-      };
-      "/state" = {
-        device = "rpool/persistent/state";
-        fsType = "zfs";
-      };
-      "/boot" = {
-        device = "/dev/disk/by-uuid/E40C-DB1A";
-        fsType = "vfat";
-      };
-      "/mnt/sdcard" = {
-        device = "/dev/disk/by-uuid/c4bbc3ff-9ee6-4a34-b536-2040105c3998";
+        device = "/dev/disk/by-label/nixos";
         fsType = "ext4";
       };
+      "/boot" = {
+        device = "/dev/disk/by-label/boot";
+        fsType = "vfat";
+      };
     };
-    powerManagement.cpuFreqGovernor = "ondemand";
+    swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
+
+    nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+    powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   };
 
   kerugma = { config, pkgs, lib, ... }: {

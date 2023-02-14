@@ -3,6 +3,10 @@
 {
   gtk = {
     enable = true;
+    font = {
+      name = "SourceCodePro Nerd Font";
+      size = 10;
+    };
     theme = {
       name = "Nordic";
       package = pkgs.nordic;

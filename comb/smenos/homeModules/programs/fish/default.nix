@@ -6,8 +6,6 @@
     shellAliases = {
       nv = "nvim";
       cls = "clear";
-      pass = "pass -c";
-      dl = "~/.scripts/dl.sh";
       lgr = "ledger";
 
       agenix = "nix run github:ryantm/agenix --";
@@ -28,7 +26,7 @@
       nf = "n flake";
       nepl = "n repl";
 
-      "s" = "sudo";
+      "S" = "sudo";
 
       ".." = "cd ..";
       "..." = "cd ../..";

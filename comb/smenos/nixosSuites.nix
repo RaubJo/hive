@@ -7,6 +7,7 @@ in {
       nix
       firewall
       ssh
+      gpg
       packages
     ];
   };
@@ -18,6 +19,8 @@ in {
       fonts
       laptop-resolutions
       autorandr
+      thinkpad-dock
+      mysql
     ];
   };
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };
