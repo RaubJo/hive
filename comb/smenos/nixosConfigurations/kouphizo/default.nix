@@ -5,7 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.xmonad
+      cell.nixosSuites.kde
     ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
