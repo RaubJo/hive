@@ -12,11 +12,10 @@ in {
     ];
   };
   laptop = {
+    imports = with nixosProfiles; [ wpa-networks users printing fonts ];
+  };
+  thinkpad = {
     imports = with nixosProfiles; [
-      wpa-networks
-      users
-      printing
-      fonts
       laptop-resolutions
       autorandr
       thinkpad-dock

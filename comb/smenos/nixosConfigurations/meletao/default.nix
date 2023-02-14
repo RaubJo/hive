@@ -6,6 +6,7 @@ let
       cell.nixosSuites.base
       cell.nixosSuites.nvidia
       cell.nixosSuites.laptop
+      cell.nixosSuites.thinkpad
       cell.nixosSuites.xmonad
       #cell.nixosSuites.hyprland
     ];
