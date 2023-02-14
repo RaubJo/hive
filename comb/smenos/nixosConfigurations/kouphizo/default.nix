@@ -5,6 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
+      cell.nixosSuites.xmonad
     ];
     networking = {
       hostName = "kouphizo";
