@@ -24,7 +24,7 @@ in {
     ];
   };
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };
-  ephemeral = { imports = with nixosProfiles; [ zfs zram minify ]; };
+  ephemeral = { imports = with nixosProfiles; [ zram minify ]; };
   nc-server = { imports = with nixosProfiles; [ nextcloud kurios ]; };
   xmonad = { imports = with nixosProfiles; [ xmonad ]; };
   awesome = { imports = with nixosProfiles; [ awesome ]; };
