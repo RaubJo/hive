@@ -40,7 +40,7 @@
     networking.hostName = "kouphizo";
     deployment = {
       allowLocalDeployment = true;
-      targetHost = "100.94.127.111";
+      targetHost = "192.168.1.111";
     };
     imports = [ cell.nixosConfigurations.kouphizo ];
   };
