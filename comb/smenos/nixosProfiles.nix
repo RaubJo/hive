@@ -178,7 +178,7 @@ in {
   };
 
   sway = { pkgs, ... }: {
-    services.xserver.videoDrivers = [ "nvidia" ];
+    #services.xserver.videoDrivers = [ "nvidia" ];
     programs.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
