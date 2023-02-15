@@ -71,6 +71,7 @@
         "${mod}+f" = "fullscreen toggle";
         "${mod}+r" = "exec ${config.wayland.windowManager.sway.config.menu}";
         "${mod}+b" = "exec qutebrowser";
+        "${mod}+e" = "exec emacs";
         "${mod}+Return" =
           "exec ${config.wayland.windowManager.sway.config.terminal}";
       };
