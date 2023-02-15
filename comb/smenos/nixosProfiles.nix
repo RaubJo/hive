@@ -198,8 +198,8 @@ in {
   };
 
   hyprland = { pkgs, ... }: {
-    imports = [ ./hyprland-scripts.nix inputs.hyprland.nixosModules.default ];
-    services.xserver.videoDrivers = [ "nvidia" ];
+    #imports = [ ./hyprland-scripts.nix inputs.hyprland.nixosModules.default ];
+    #services.xserver.videoDrivers = [ "nvidia" ];
     programs.hyprland.enable = true;
     services.xserver.enable = true;
     services.xserver.displayManager.gdm.enable = true;
