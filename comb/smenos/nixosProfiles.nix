@@ -135,7 +135,11 @@ in {
       enable = true;
       layout = "us";
       libinput.enable = true;
-      displayManager = { lightdm.enable = true; };
+      displayManager = {
+        lightdm.enable = true;
+        lightdm.greeters.slick.enable = true;
+        lightdm.background = ./images/background/snow_mountains.jpg;
+      };
       windowManager.awesome = { enable = true; };
     };
   };

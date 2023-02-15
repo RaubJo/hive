@@ -5,7 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.awesome
+      cell.nixosSuites.xmonad
     ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
@@ -33,7 +33,7 @@ in rec {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.joseph = {
-      imports = [ ] ++ cell.homeSuites.josephAwesome;
+      imports = [ cell.homeSuites.joseph-arm ];
       home.stateVersion = "23.05";
     };
   }];

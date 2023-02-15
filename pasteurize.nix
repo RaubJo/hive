@@ -95,12 +95,26 @@ let
           map (x: x.message) (l.filter (x: !x.assertion) checked._hive_erased);
       in if failedAsserts != [ ] then
         throw ''
-
           Failed assertions:
           ${l.concatStringsSep "\n" (map (x: "- ${x}") failedAsserts)}''
       else
         checked;
-    in locatedConfig // (out asserted);
+
+      recursiveMerge = with l;
+        attrList:
+        let
+          f = attrPath:
+            zipAttrsWith (n: values:
+              if tail values == [ ] then
+                head values
+              else if all isList values then
+                unique (concatLists values)
+              else if all isAttrs values then
+                f [ n ] values
+              else
+                last values);
+        in f [ ] attrList;
+    in recursiveMerge [ locatedConfig (out asserted) ];
 
   /* We start with:
      ${system}.${user}.${cellBlock}.${machine} = config;
@@ -125,13 +139,13 @@ let
                 inherit (asserted.bee.pkgs)
                   config; # nixos modules don't load this
               };
-              #  imports = [ ] ++ l.optionals (asserted.bee ? home) [
-              #    asserted.bee.home.nixosModules.home-manager
-              #    {
-              #      home-manager.useGlobalPkgs = true;
-              #      home-manager.useUserPackages = true;
-              #    }
-              #  ];
+              imports = [ ] ++ l.optionals (asserted.bee ? home) [
+                asserted.bee.home.nixosModules.home-manager
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                }
+              ];
             })))
           (l.filterAttrs (_: config: config.nixpkgs.system == system))
           (l.mapAttrs (machine: l.nameValuePair "${user}-o-${machine}"))

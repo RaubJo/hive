@@ -27,16 +27,11 @@ let
   };
 in {
   joseph = { config, ... }: {
-    inherit bee manual;
+    inherit manual;
     imports = with homeSuites;
-      [ ] ++ system ++ hyprland ++ emacs ++ shell ++ shellUtils;
+      [ ] ++ system ++ xmonad ++ emacs ++ shell ++ shellUtils;
   };
   joseph-arm = { pkgs, config, lib, ... }: {
-    bee = {
-      system = "aarch64-linux";
-      inherit (inputs) home;
-      pkgs = inputs.nixos.legacyPackages;
-    };
     inherit manual;
     targets.genericLinux.enable = true;
     imports = with homeSuites;

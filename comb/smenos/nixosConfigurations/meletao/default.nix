@@ -71,7 +71,7 @@ in rec {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {
-      imports = [ ] ++ cell.homeSuites.joseph;
+      imports = [ cell.homeConfigurations.joseph ];
       home.stateVersion = "23.05";
     };
   }];
