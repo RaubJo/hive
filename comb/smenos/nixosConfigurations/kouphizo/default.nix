@@ -5,7 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.xmonad
+      cell.nixosSuites.hyprland
     ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
@@ -28,6 +28,7 @@ in rec {
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
+    overlays = [ inputs.hyprland.overlays.default ];
   };
   imports = [ bee.home.nixosModules.home-manager init ] ++ [{
     home-manager.useUserPackages = true;

@@ -35,7 +35,7 @@ in {
     inherit manual;
     targets.genericLinux.enable = true;
     imports = with homeSuites;
-      [ ] ++ system ++ shell ++ shellUtils ++ emacs ++ xmonad;
+      [ ] ++ system ++ shell ++ shellUtils ++ emacs ++ hyprland;
   };
 
   #   server = {
