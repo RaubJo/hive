@@ -33,7 +33,7 @@ in rec {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.joseph = {
-      imports = [ ] ++ cell.homeSuites.joseph-arm;
+      imports = [ ] ++ cell.homeConfigurations.joseph-arm;
       home.stateVersion = "23.05";
     };
   }];
