@@ -189,10 +189,13 @@ in {
       ];
     };
     programs.waybar.enable = true;
-    services.xserver.displayManager = {
-      gdm.enable = true;
-      gdm.wayland = true;
-      defaultSession = "sway";
+    services.xserver = {
+      enable = true;
+      displayManager = {
+        gdm.enable = true;
+        gdm.wayland = true;
+        defaultSession = "sway";
+      };
     };
   };
 
