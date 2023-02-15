@@ -54,9 +54,9 @@
     sqlite
 
     # 3D printing
-    prusa-slicer
-    openscad
-    freecad
+    #prusa-slicer
+    #openscad
+    #freecad
 
     # Multimedia
     vlc

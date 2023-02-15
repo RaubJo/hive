@@ -4,7 +4,7 @@
   programs.emacs = {
     enable = true;
     #package = pkgs.emacs28NativeComp;
-    extraPackages = epkgs: [ epkgs.vterm epkgs.phpactor epkgs.composer ];
+    extraPackages = epkgs: with epkgs; [ vterm phpactor composer phpunit ];
   };
 
 }

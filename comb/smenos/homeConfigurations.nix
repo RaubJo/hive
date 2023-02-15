@@ -39,7 +39,8 @@ in {
     };
     inherit manual;
     targets.genericLinux.enable = true;
-    imports = with homeSuites; [ ] ++ system ++ shell ++ xmonad;
+    imports = with homeSuites;
+      [ ] ++ system ++ shell ++ shellUtils ++ emacs ++ xmonad;
   };
 
   #   server = {
