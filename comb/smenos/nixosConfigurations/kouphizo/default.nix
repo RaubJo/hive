@@ -5,7 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.sway
+      cell.nixosSuites.hyprland
     ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
@@ -34,7 +34,10 @@ in rec {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.joseph = {
-      imports = [ cell.homeConfigurations.joseph-arm ];
+      imports = [
+        cell.homeConfigurations.joseph-arm
+        #inputs.hyprland.homeManagerModules.default
+      ];
       home.stateVersion = "23.05";
     };
   }];
