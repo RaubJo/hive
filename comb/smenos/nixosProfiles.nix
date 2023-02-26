@@ -1,6 +1,5 @@
 let
   inherit (inputs) hyprland nixpkgs;
-  #inherit (cell) customScripts;
   lib = nixpkgs.lib // builtins;
 in {
   # Networking #
@@ -388,6 +387,7 @@ in {
             "mysql"
             "video"
             "dialout"
+            "docker"
             "libvirtd"
             "networkmanager"
             "surface-control"
@@ -507,6 +507,8 @@ in {
     };
   };
 
+  docker = { virtualisation.docker.enable = true; };
+
   gpg = {
     programs.gnupg.agent = {
       enable = true;
@@ -536,6 +538,12 @@ in {
         '';
         mode = "644"; # This prevents tailscaled from rewriting resolv.conf
       };
+      "test.txt".text = ''
+        rgb(${
+          inputs.nix-colors.lib-core.conversions.hexToRGBString "," "ABCDEF"
+        })
+
+      '';
     };
   };
 
@@ -576,4 +584,7 @@ in {
   # System(s) Secrets
   # agenix, sops, ragenix confs go here
   secrets = { age.secrets.test.file = ./secrets/test.age; };
+
+  #Custom Modules
+  hello = import ./homeModules/brood.nix;
 }

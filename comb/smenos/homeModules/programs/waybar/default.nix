@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
-
-{
+let
+  #
+  toRGB = h: inputs.nix-colors.lib-core.conversions.hexToRGBString "," h;
+  # use ${toRGB "HEXCODE"}
+in {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oa: {
