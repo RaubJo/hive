@@ -1,0 +1,66 @@
+* {
+     border: none;
+     border-radius: 0;
+     font-family: Source Code Pro;
+     font-size: 12px;
+}
+ window#waybar {
+     background: #16191C;
+     color: #AAB2BF;
+}
+ window#waybar.hidden {
+     opacity: 0.2;
+}
+ #waybar > .horizontal {
+     padding: 5px 5px 0;
+}
+ #waybar > .horizontal > .horizontal:nth-child(1) {
+     margin-right: 10px;
+}
+ button {
+    /* Use box-shadow instead of border so the text isn't offset */
+     box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+     border: none;
+     border-radius: 0;
+     font-size: 28px;
+}
+ #workspaces button.focused {
+     background: #81A1C1;
+}
+ #workspaces button.urgent {
+     background: #bf616a;
+}
+ #mode {
+     margin: 10px 0 0 10px;
+     padding: 0 10px;
+     border-radius: 5px;
+}
+ #window {
+     font-weight: 600;
+     margin: 10px 0 0 10px;
+}
+ #clock, #battery #cpu, #memory, #disk, #backlight, #network, #tray, #mode {
+     padding: 0 10px;
+     color: #ffffff;
+}
+ #window, #workspaces {
+     margin: 0 4px;
+}
+ .modules-left > widget:first-child > #workspaces {
+     margin-left: 0;
+}
+ .modules-right > widget:last-child > #workspaces {
+     margin-right: 0;
+}
+ #clock {
+     background-color: #81A1C1;
+}
+ #battery {
+     background-color: #ffffff;
+     color: #000000;
+}
+ #battery.charging, #battery.plugged {
+     color: #ffffff;
+     background-color: #A3BE8C;
+}

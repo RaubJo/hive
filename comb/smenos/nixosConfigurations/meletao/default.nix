@@ -9,6 +9,7 @@ let
       cell.nixosSuites.thinkpad
       cell.nixosSuites.xmonad
       #cell.nixosSuites.hyprland
+      cell.nixosProfiles.hello
     ];
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot = {
@@ -22,6 +23,7 @@ let
         };
       };
     };
+    systemd.services.hello.enable = true;
     networking = {
       hostName = "meletao";
       interfaces.enp0s31f6.useDHCP = true;
@@ -55,13 +57,17 @@ let
     programs.dconf.enable = true;
     system.stateVersion = "23.05";
   };
+
+  discordASAR = self: super: {
+    discord = super.discord.override { withOpenASAR = true; };
+  };
 in rec {
   bee.system = "x86_64-linux";
   bee.home = inputs.home;
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
-    overlays = [ inputs.hyprland.overlays.default ];
+    overlays = [ inputs.hyprland.overlays.default discordASAR ];
   };
   imports = [
     bee.home.nixosModules.home-manager
@@ -71,7 +77,7 @@ in rec {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {
-      imports = [ cell.homeConfigurations.joseph ];
+      imports = [ cell.homeConfigurations.joseph inputs.doom-emacs.hmModule ];
       home.stateVersion = "23.05";
     };
   }];

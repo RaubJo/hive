@@ -20,6 +20,7 @@ in {
       autorandr
       thinkpad-dock
       mysql
+      docker
     ];
   };
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };

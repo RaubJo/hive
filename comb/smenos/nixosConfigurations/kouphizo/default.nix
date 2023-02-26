@@ -5,7 +5,7 @@ let
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
       cell.nixosSuites.laptop
-      cell.nixosSuites.sway
+      cell.nixosSuites.hyprland
     ];
     boot.kernelPackages = pkgs.linuxPackages_latest;
     networking = {
@@ -34,8 +34,15 @@ in rec {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.joseph = {
+<<<<<<< HEAD
       imports =
         [ cell.homeConfigurations.joseph-arm inputs.doom-emacs.hmModule ];
+=======
+      imports = [
+        cell.homeConfigurations.joseph-arm
+        #inputs.hyprland.homeManagerModules.default
+      ];
+>>>>>>> origin/master
       home.stateVersion = "23.05";
     };
   }];

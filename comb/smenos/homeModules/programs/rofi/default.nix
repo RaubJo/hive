@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 {
   programs.rofi = {
     enable = true;
@@ -9,5 +8,7 @@
       enable = true;
       stores = [ "~/.password-store" ];
     };
+    plugins = with pkgs; [ rofi-calc ];
+    # location = "bottom";
   };
 }

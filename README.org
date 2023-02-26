@@ -78,6 +78,7 @@ When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I bega
 These are groups of profiles that can be referenced at once, instead of separately.
 ** Profiles
 These are application specific configurations that can be referenced individually or integrated through suites.
+** Custom Nixos Modules [WIP]
 * Development Environments
 ** PHP
 ** Python
@@ -124,3 +125,4 @@ These were what help me understand [[https://github.com/divnix/std][std]] the mo
 - [[https://www.loom.com/share/5c1badd77ab641d3b8e256ddbba69042][Std - Nixago]]
 ** Random stuff I want to remember
 - [[https://github.com/KubqoA/dotfiles][Winter Theme]]
+  I really like the waybar config on this one.
