@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   #
   toRGB = h: inputs.nix-colors.lib-core.conversions.hexToRGBString "," h;

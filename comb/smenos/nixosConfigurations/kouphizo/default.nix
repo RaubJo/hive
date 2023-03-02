@@ -34,15 +34,8 @@ in rec {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.joseph = {
-<<<<<<< HEAD
       imports =
         [ cell.homeConfigurations.joseph-arm inputs.doom-emacs.hmModule ];
-=======
-      imports = [
-        cell.homeConfigurations.joseph-arm
-        #inputs.hyprland.homeManagerModules.default
-      ];
->>>>>>> origin/master
       home.stateVersion = "23.05";
     };
   }];

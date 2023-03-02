@@ -10,7 +10,23 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINbTEKwuO9ST9EQnzqeN9GMo2oXhpf00lY/lBQMs/j4";
   nephos =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGmcxRVSli1cRYIC9LELJHoI13bE1+alCfD8cf/TNvZv";
-
+  users = [ joseph-rsa ];
   systems = [ meletao tameieon nephos ];
 
-in { "test.age".publicKeys = [ joseph-rsa ] ++ systems; }
+in {
+  "t.age".publicKeys = [ joseph-rsa ] ++ systems;
+  "cloudflare-cert.age".publicKeys = [ joseph-rsa nephos ];
+  "WRT300N-DD.age".publicKeys = systems ++ users;
+  "FTCNWKS.age".publicKeys = systems ++users;
+  "Phone.age".publicKeys = systems ++ users;
+  "NHBC.age".publicKeys = systems ++ users;
+  "NETGEAR09-5G.age".publicKeys = systems ++ users;
+  "RAUB.age".publicKeys = systems ++ users;
+  "Raub.age".publicKeys = systems ++ users;
+  "Hearn.age".publicKeys = systems ++ users;
+  "SpectrumSetup-64.age".publicKeys = systems ++ users;
+  "Southland_Public.age".publicKeys = systems ++users;
+  "Here.age".publicKeys = systems ++ users;
+  "4_Chips.age".publicKeys = systems ++ users;
+
+}

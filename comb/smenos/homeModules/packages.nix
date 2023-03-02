@@ -2,9 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    slack
-    discord
-
     # CLI Tools
     bpytop # System overview
     asciinema # Record terminal session

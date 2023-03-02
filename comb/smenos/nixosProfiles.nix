@@ -7,8 +7,8 @@ in {
     networking.firewall = {
       enable = true;
       checkReversePath = "loose";
-      allowedTCPPorts = [ 22 80 ];
-      allowedUDPPorts = [ 53 80 ];
+      allowedTCPPorts = [ 22 80 443 3001 ];
+      allowedUDPPorts = [ 53 80 443 3001 ];
     };
   };
 
@@ -21,68 +21,57 @@ in {
         userControlled.group = "wheel";
         networks = {
           "WRT300N-DD" = {
-            #psk = "abcxyz123";
             pskRaw =
               "01615c3307d6bc6c8ba8113df877604fc5bfc4bf5c79e9580420e1f9d8fa43c8";
           };
           FTCNWKS = {
-            #psk = "FlesS117";
             pskRaw =
               "67465f1716ee60c76d89a05c3b1015e87889961064aa13c6299a0b3e465723ae";
           };
           Phone = {
-            #psk = "josephraub";
             pskRaw =
               "4206780088dbc2528e3c8426ab9dfd7c6e7b0d3c6ec161897a975633ae04bc43";
+            priority = 5;
           };
           NHBC = {
-            #psk = "LfeHQgQXm4fwk3H92q69mdGRAnVBB2FQ9yMJrsLm";
             pskRaw =
               "b0695d90f6630f9618ffcfde2fa33b7f72316fc41ac156d4c9020d3727097089";
+            priority = 4;
           };
           NETGEAR09 = {
-            #psk = "2nhbcapt";
             pskRaw =
               "2ef892d3c4497bd656eee36468170fb5f1ffc707bfffc5ca0676ab51992dbeca";
           };
           NETGEAR09-5G = {
-            #psk = "2nhbcapt";
             pskRaw =
               "9b7e5b1cd33d135285b45c174b521e1232b884f8960599f06654865d4f03c8fb";
-            priority = 5;
+            priority = 4;
           };
           RAUB = {
-            #psk = "g1sg00D@T";
             pskRaw =
               "cc589f9341298c99e1e302987fb6051adfa5f16a7ceb253faac3fe467d3b8e15";
           };
           Raub = {
-            #psk = "7857261003";
             pskRaw =
               "30152cb984de3fafec99ab6a8db9479671cc7d97a83951a24eaea60b8b0ffca4";
           };
           Hearn = {
-            #psk = "Hearnhouse";
             pskRaw =
               "0427cc1ce2482b8a3fed13991403e27579492c343766be76cdbed0a723b3bbf4";
           };
           SpectrumSetup-64 = {
-            #psk = "markettown240";
             pskRaw =
               "3137ea7591b8948c72cc14f09662d8e07d4332f3ae6a3df8466b1cc8dc3947e9";
           };
           "Southland Public" = {
-            #psk = "southland1993";
             pskRaw =
               "2fcafd19719819c614aca984b379f0cd2887f177b0bb1c5aa1b67423c5b28e74";
           };
           Here = {
-            #psk = "0Athai1andZ1";
             pskRaw =
               "308393ef5547f39cc27d13e888939162ada177d75a6518acbaa2ba79a3ec55eb";
           };
           "4_Chips" = {
-            #psk = "And4salsa";
             pskRaw =
               "9436e7d312766b7545f863b95c821cc5e66d2f2f295e152928d22122399c788b";
           };
@@ -210,14 +199,6 @@ in {
   };
 
   ### Web Services ###
-  gitea = { config, ... }: {
-    services.gitea = {
-      enable = true;
-      httpAddress = "0.0.0.0";
-      httpPort = 8001;
-    };
-  };
-
   hydra = { config, ... }: {
     services.hydra = {
       enable = true;
@@ -359,6 +340,8 @@ in {
       brightnessctl
       acpi
       firefox
+      docker
+      docker-compose
     ];
   };
 
@@ -418,7 +401,7 @@ in {
       shell = pkgs.fish;
       hashedPassword =
         "$6$BO.9zW.3miRB4vNH$ixlr4ue0MYnaQbtKRzncjOHg25DFbm3MvjfD4GIC4.12HDCRlzh2B/X6zPtoa4ExjOoCQu8oxtCnSv3vjdBid.";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" "cloudflared" ];
       packages = with pkgs; [ git wget neovim ];
       openssh.authorizedKeys.keys = [
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuAkGqx5yNT2+ZO7SRGfNVxh+4qb3YhEBsntTAMpdLjrmJTAtgDqdigjXosuAlHVUVjTQeWLQbk1kfRxaI4VA9Nj9uROTY3lhlwNtvhLxYumwRrKZ2j95lY8nAtaDSNHfg8MPMkVHXGi+8imSZEGyKx4p4V65RrOvMTYFP144OFdoIln1AjWuUf2/c4oBS0MESz0gECzexy4//gZv38GDyug0N/7vUkfl5lceIRQjIAtRgxM7qdifoFJCRHCdc1PP7wXfNMpAcYNd0rWjXQNrbQrvTG/RJwoN4Y/G0ZVKtQbLfpXD3QovFl7CcymX9/roJGfKdkHu4VfHSdZ5WZbuJwVsBEDwMpELz9uoLYEeYNu/qHPdl11STsKl9F9K7rkkF68k2iJxv+MRsCQQojyzryQHoVFnV3FwGg69gemVKyMExKfpDR0zBfIbw4Ky7m3PeMzg9dTytMCx/fK4iuNvXjiu2tX6jjsVnWcpqLwCj3BiLkA2Lia1rdRYXzofxgp8= joseph@meletao"
@@ -507,7 +490,261 @@ in {
     };
   };
 
+  cloudflare-tunnel = { config, pkgs, ... }: {
+    services.cloudflared = {
+      enable = true;
+      tunnels = {
+        "eaff455f-07fb-4a9a-91ed-a9f893644aff" = {
+          credentialsFile =
+            "/var/cloudflare/eaff455f-07fb-4a9a-91ed-a9f893644aff.json";
+          default = "http_status:404";
+          ingress = {
+            "git.bitwright.dev" = "http://localhost";
+            "*.bitwright.dev" = "http://localhost";
+            "*.bitwright.dev/git" = "http://localhost";
+          };
+        };
+      };
+    };
+  };
+
   docker = { virtualisation.docker.enable = true; };
+
+  drone-cicd = { config, pkgs, ... }: {
+    systemd.services.drone-server = {
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        EnvironmentFile = [
+          #age.secrest.drone.path
+        ];
+        Environment = [
+          "DRONE_DATABASE_DATASOURCE=postgres:///droneserver?host=/run/postgresql"
+          "DRONE_DATABASE_DRIVER=postgres"
+          "DRONE_SERVER_PORT=:3030"
+          "DRONE_USER_CREATE=username:viperML,admin:true"
+
+          "DRONE_GITEA_SERVER=https://git.bitwright.dev"
+          "DRONE_SERVER_HOST=drone.bitwright.dev"
+          "DRONE_SERVER_PROTO=https"
+        ];
+        ExecStart = "${pkgs.drone}/bin/drone-server";
+        User = "droneserver";
+        Group = "droneserver";
+      };
+    };
+    users.users.drone-runner-docker = {
+      isSystemUser = true;
+      group = "drone-runner-docker";
+    };
+    users.groups.drone-runner-docker = { };
+    users.groups.docker.members = [ "drone-runner-docker" ];
+
+    systemd.services.drone-runner-docker = {
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      restartIfChanged = false;
+      serviceConfig = {
+        Environment = [
+          "DRONE_RPC_PROTO=http"
+          "DRONE_RPC_HOST=localhost:3030"
+          "DRONE_RUNNER_CAPACITY=2"
+          "DRONE_RUNNER_NAME=drone-runner-docker"
+        ];
+        EnvironmentFile = [
+          #age.secrets.drone.path;
+        ];
+        ExecStart = "${pkgs.drone-runner-docker}/bin/drone-runner-docker";
+        User = "drone-runner-docker";
+        Group = "drone-runer-docker";
+      };
+    };
+
+    users.users.drone-runner-exec = {
+      isSystemUser = true;
+      group = "drone-runner-exec";
+    };
+    users.groups.drone-runner-exec = { };
+    # Allow the exec runner to write to build with nix
+    nix.allowedUsers = [ "drone-runner-exec" ];
+
+    systemd.services.drone-runner-exec = {
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      ### MANUALLY RESTART SERVICE IF CHANGED
+      restartIfChanged = true;
+      confinement.enable = true;
+      confinement.packages =
+        [ pkgs.git pkgs.gnutar pkgs.bash pkgs.nixFlakes pkgs.gzip ];
+      path = [ pkgs.git pkgs.gnutar pkgs.bash pkgs.nixFlakes pkgs.gzip ];
+      serviceConfig = {
+        Environment = [
+          "DRONE_RPC_PROTO=http"
+          "DRONE_RPC_HOST=127.0.0.1:3030"
+          "DRONE_RUNNER_CAPACITY=2"
+          "DRONE_RUNNER_NAME=drone-runner-exec"
+          "NIX_REMOTE=daemon"
+          "PAGER=cat"
+          "DRONE_DEBUG=true"
+        ];
+        BindPaths = [
+          "/nix/var/nix/daemon-socket/socket"
+          "/run/nscd/socket"
+          # "/var/lib/drone"
+        ];
+        BindReadOnlyPaths = [
+          "/etc/passwd:/etc/passwd"
+          "/etc/group:/etc/group"
+          "/nix/var/nix/profiles/system/etc/nix:/etc/nix"
+          "${
+            config.environment.etc."ssl/certs/ca-certificates.crt".source
+          }:/etc/ssl/certs/ca-certificates.crt"
+          "${
+            config.environment.etc."ssh/ssh_known_hosts".source
+          }:/etc/ssh/ssh_known_hosts"
+          "${
+            builtins.toFile "ssh_config" ''
+              Host git.ayats.org
+              ForwardAgent yes
+            ''
+          }:/etc/ssh/ssh_config"
+          "/etc/machine-id"
+          "/etc/resolv.conf"
+          "/nix/"
+        ];
+        EnvironmentFile = [ # config.sops.secrets.drone.path
+        ];
+        ExecStart = "${pkgs.drone-runner-exec}/bin/drone-runner-exec";
+        User = "drone-runner-exec";
+        Group = "drone-runner-exec";
+      };
+    };
+
+    virtualisation.docker = { enable = true; };
+  };
+
+  gitea = { config, pkgs, ... }: {
+    services.gitea = {
+      enable = true;
+      appName = "Gitea at Bitwright.dev";
+      database = {
+        type = "postgres";
+        passwordFile = pkgs.writeText "dbPassword" "test1234";
+      };
+      domain = "bitwright.dev";
+      rootUrl = "http://git.bitwright.dev/";
+      httpPort = 3001;
+      settings = {
+        service.DISABLE_REGISTRATION = false;
+        session.COOKIE_SECURE = false;
+        server = {
+          SSH_PORT = 22;
+          DISABLE_SSH = false;
+        };
+        log = {
+          ROOT_PATH = "${config.services.gitea.stateDir}/log";
+          LEVEL = "Info";
+        };
+      };
+      extraConfig = ''
+        #https://docs.gitea.io/en-us/config-cheat-sheet/#service-service
+        RUN_MODE = prod
+        [service]
+        SHOW_REGISTRATION_BUTTON=false
+      '';
+    };
+
+    services.postgresql = {
+      enable = true;
+      authentication = ''
+        local gitea all ident map=gitea-users
+      '';
+      identMap = ''
+        gitea-users gitea gitea
+      '';
+    };
+
+    services.nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      recommendedBrotliSettings = true;
+      virtualHosts = {
+        "git.bitwright.dev" = {
+          locations."/".proxyPass = "http://localhost:3001";
+        };
+        "bitwright.dev" = {
+          addSSL = true;
+          enableACME = true;
+          #root = "/var/www/bitwright.dev";
+          locations = { "/".root = "/var/www/bitwright.dev"; };
+        };
+
+      };
+    };
+
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "josephraub98@gmail.com";
+    };
+  };
+
+  ddclient = { config, pkgs, ... }: {
+    services.ddclient = {
+      enable = true;
+      ssl = true;
+      protocol = "googledomains";
+      username = "KoxTaqLrWPh4lVSy";
+      passwordFile = "${pkgs.writeText "password" "uMSbFLgCZcgPQnUz"}";
+      ipv6 = false;
+      use = "web, web=checkip.dyndns.com/, web-skip='Current IP Address: '";
+      interval = "10min";
+      domains = [ "bitwright.dev" ];
+    };
+  };
+
+  gitlab = { config, pkgs, ... }: {
+    services.gitlab = {
+      enable = true;
+      databasePasswordFile = pkgs.writeText "dbPassword" "test123";
+      databaseCreateLocally = true;
+      initialRootEmail = "admin@local.host";
+      initialRootPasswordFile = pkgs.writeText "rootPassword" "test1234";
+      secrets = {
+        secretFile = pkgs.writeText "secret" "Aig5zaic";
+        otpFile = pkgs.writeText "otpsecret" "Riew9mue";
+        dbFile = pkgs.writeText "dbsecret" "we2quaeZ";
+        jwsFile = pkgs.runCommand "oidcKeyBase" { }
+          "${pkgs.openssl}/bin/openssl genrsa 2048 > $out";
+      };
+    };
+
+    services.postgresql = {
+      enable = true;
+      port = 5432;
+      identMap = ''
+        gitlab-users gitlab postgres
+      '';
+      ensureUsers = [{ name = "gitlab"; }];
+    };
+
+    services.nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        localhost = {
+          locations."/".proxyPass =
+            "http://unix:/run/gitlab/gitlab-workhorse.socket";
+
+        };
+      };
+
+    };
+
+    environment.systemPackages = with pkgs; [ openssl ];
+    systemd.services.gitlab-backp.environment.BACKUP = "dump";
+
+  };
 
   gpg = {
     programs.gnupg.agent = {

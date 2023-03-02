@@ -15,6 +15,7 @@ let
   };
 in rec {
   bee.system = "x86_64-linux";
+  bee.home = inputs.home;
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
@@ -23,6 +24,8 @@ in rec {
     init
     cell.hardwareProfiles.nephos
     cell.nixosSuites.base
-    cell.nixosSuites.nc-server
+    cell.nixosSuites.gitea-server
+    cell.nixosProfiles.docker
+    cell.nixosProfiles.ddclient
   ];
 }

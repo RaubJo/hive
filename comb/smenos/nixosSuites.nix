@@ -26,6 +26,10 @@ in {
   nvidia = { imports = with nixosProfiles; [ nvidia ]; };
   ephemeral = { imports = with nixosProfiles; [ zram minify ]; };
   nc-server = { imports = with nixosProfiles; [ nextcloud kurios ]; };
+  gitlab-server = { imports = with nixosProfiles; [ gitlab kurios ]; };
+  gitea-server = {
+    imports = with nixosProfiles; [ gitea cloudflare-tunnel kurios ];
+  };
   xmonad = { imports = with nixosProfiles; [ xmonad ]; };
   awesome = { imports = with nixosProfiles; [ awesome ]; };
   hyprland = { imports = with nixosProfiles; [ hyprland ]; };
