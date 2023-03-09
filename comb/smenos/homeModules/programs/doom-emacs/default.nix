@@ -8,6 +8,7 @@
       with epkgs; [
         vterm
         phpactor
+        company-phpactor
         composer
         phpunit
         lsp-tailwindcss

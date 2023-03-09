@@ -39,6 +39,7 @@
     crawl
 
     # Programming
+    vscode
     rustc
     rustfmt
     cargo

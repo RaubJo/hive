@@ -8,7 +8,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-
-    config.networking.networkmanager.enable = mkIf cfg.flavor true;
+    config.networking.networkmanager.enable = mkIf cfg.flavor
+      == "networkmanager" true;
   };
 }

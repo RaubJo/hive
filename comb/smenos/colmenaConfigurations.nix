@@ -4,7 +4,7 @@
     deployment = {
       allowLocalDeployment = true;
       targetHost = null;
-      keys = { test_password = { keyFile = ./secrets/test_password.txt; }; };
+      #keys = { test_password = { keyFile = ./secrets/test_password.txt; }; };
     };
     imports = [ cell.nixosConfigurations.meletao ];
   };
@@ -19,6 +19,9 @@
       #privilegeEscalationCommand = [ "sudo" ];
       buildOnTarget = false;
       allowLocalDeployment = false;
+      keys = {
+        # ddclient-user.keyFile = ./secrets/ddclient
+      };
     };
     imports = [ cell.nixosConfigurations.nephos ];
   };

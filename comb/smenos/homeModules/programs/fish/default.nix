@@ -37,7 +37,7 @@
       ydl = "youtube-dl";
       m = "math";
     };
-    shellInit = "\n        starship init fish | source\n      ";
+    shellInit = "\n        starship init fish | source \n     ";
   };
 
 }

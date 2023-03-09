@@ -14,7 +14,6 @@ let
   systems = [ meletao tameieon nephos ];
 
 in {
-  "t.age".publicKeys = [ joseph-rsa ] ++ systems;
   "cloudflare-cert.age".publicKeys = [ joseph-rsa nephos ];
   "WRT300N-DD.age".publicKeys = systems ++ users;
   "FTCNWKS.age".publicKeys = systems ++users;
@@ -28,5 +27,8 @@ in {
   "Southland_Public.age".publicKeys = systems ++users;
   "Here.age".publicKeys = systems ++ users;
   "4_Chips.age".publicKeys = systems ++ users;
+  "ddclient-user.age".publicKeys = [ joseph-rsa nephos ];
+  "ddclient-pass.age".publicKeys = [ joseph-rsa nephos ];
+  "gitea-dbpass.age".publicKeys = [ joseph-rsa nephos ];
 
 }

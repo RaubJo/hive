@@ -1,0 +1,22 @@
+#+title: Modules Index
+#+author: Joseph Raub
+
+
+* Smenos
+** Servers
+*** Git
+*** Nextcloud
+*** HTTP/HTTPS
+*** Mailserver?
+** Usecases
+*** Dev
+*** CAD
+** Desktop Environments
+*** Xmonad+Xmobar
+*** Xmoand+Polybar?
+*** Awesome
+*** Hyprland+Waybar
+*** Sway+Waybar
+*** KDE
+*** Gnome
+** NVIDIA

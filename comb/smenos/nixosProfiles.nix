@@ -342,6 +342,8 @@ in {
       firefox
       docker
       docker-compose
+      direnv
+      vscode
     ];
   };
 
@@ -603,7 +605,7 @@ in {
           }:/etc/ssh/ssh_known_hosts"
           "${
             builtins.toFile "ssh_config" ''
-              Host git.ayats.org
+              Host git.bitwright.dev
               ForwardAgent yes
             ''
           }:/etc/ssh/ssh_config"
@@ -631,7 +633,7 @@ in {
         passwordFile = pkgs.writeText "dbPassword" "test1234";
       };
       domain = "bitwright.dev";
-      rootUrl = "http://git.bitwright.dev/";
+      rootUrl = "https://git.bitwright.dev/";
       httpPort = 3001;
       settings = {
         service.DISABLE_REGISTRATION = false;
@@ -694,8 +696,8 @@ in {
       enable = true;
       ssl = true;
       protocol = "googledomains";
-      username = "KoxTaqLrWPh4lVSy";
-      passwordFile = "${pkgs.writeText "password" "uMSbFLgCZcgPQnUz"}";
+      username = "DdtxLAeSTB0nXnmQ";
+      passwordFile = "${pkgs.writeText "password" "dEt4EwV06sJLZ9rO"}";
       ipv6 = false;
       use = "web, web=checkip.dyndns.com/, web-skip='Current IP Address: '";
       interval = "10min";

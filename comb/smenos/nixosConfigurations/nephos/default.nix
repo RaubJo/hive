@@ -27,5 +27,6 @@ in rec {
     cell.nixosSuites.gitea-server
     cell.nixosProfiles.docker
     cell.nixosProfiles.ddclient
+    ../../nixosModules/gitServer.nix
   ];
 }
