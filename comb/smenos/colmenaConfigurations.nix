@@ -1,5 +1,5 @@
 {
-  meletao = { config, ... }: {
+  meletao = { ... }: {
     networking.hostName = "meletao";
     deployment = {
       allowLocalDeployment = true;

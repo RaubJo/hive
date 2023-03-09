@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { pkgs, ... }: {
     imports = [
       cell.hardwareProfiles.kerugma
       cell.nixosSuites.base

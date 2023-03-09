@@ -1,5 +1,5 @@
 {
-  meletao = { pkgs, config, lib, ... }: {
+  meletao = { config, lib, ... }: {
     imports = [
       # inputs.disko.nixosModules.disko
       # { disko.devices = cell.diskoConfigurations.meletao; }
@@ -58,7 +58,7 @@
       lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
-  kouphizo = { config, lib, ... }: {
+  kouphizo = { lib, ... }: {
     boot.loader.grub.enable = false;
     boot.loader.generic-extlinux-compatible.enable = true;
     boot.initrd.availableKernelModules = [ "usb_storage" "usbhid" ];
@@ -82,7 +82,7 @@
     powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   };
 
-  kerugma = { config, pkgs, lib, ... }: {
+  kerugma = { config, lib, ... }: {
     boot.initrd.availableKernelModules =
       [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
     boot.initrd.kernelModules = [ ];
@@ -105,8 +105,8 @@
       lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
-  thureos = { config, pkgs, lib, ... }: { };
-  tamieion = { config, pkgs, lib, ... }: {
+  thureos = { ... }: { };
+  tamieion = { config, lib, ... }: {
     boot.initrd.availableKernelModules = [
       "ehci_pci"
       "ahci"

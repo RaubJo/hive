@@ -1,24 +1,5 @@
 let
-  inherit (cell) homeSuites homeProfiles;
-  inherit (inputs) nixos;
-
-  bee = {
-    system = "x86_64-linux";
-    inherit (inputs) home;
-    pkgs = inputs.nixos.legacyPackages;
-  };
-
-  home = rec {
-    homeDirectory = "/home/${username}";
-    stateVersion = "23.05";
-    username = "joseph";
-    sessionVariables = { EDITOR = "nvim"; };
-    keyboard = {
-      layout = "us,gr,il,th";
-      variant = ",polytonic,biblical,";
-      options = [ "grp:alt_shift_toggle" ];
-    };
-  };
+  inherit (cell) homeSuites;
 
   manual = {
     manpages.enable = false;
@@ -26,12 +7,12 @@ let
     json.enable = false;
   };
 in {
-  joseph = { config, ... }: {
+  joseph = { ... }: {
     inherit manual;
     imports = with homeSuites;
       [ ] ++ system ++ xmonad ++ emacs ++ shell ++ shellUtils;
   };
-  joseph-arm = { pkgs, config, lib, ... }: {
+  joseph-arm = { ... }: {
     inherit manual;
     targets.genericLinux.enable = true;
     imports = with homeSuites;

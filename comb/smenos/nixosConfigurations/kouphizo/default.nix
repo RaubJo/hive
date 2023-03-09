@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { pkgs, lib, ... }: {
     imports = [
       cell.hardwareProfiles.kouphizo
       cell.nixosSuites.base
