@@ -1,4 +1,4 @@
-{ config, lib, options, pkgs, ... }:
+{ config, lib, options, ... }:
 with lib;
 let cfg = config.smenos.servers.git;
 in {

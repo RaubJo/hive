@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { config, ... }: {
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot.loader.grub = {
       enable = true;

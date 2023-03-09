@@ -7,7 +7,7 @@
 in
   self: let
     comb = pasteurize self;
-    evalNode = extra: name: config: let
+    evalNode = extra: _name: config: let
       inherit (stir config) evalConfig system;
     in
       evalConfig {

@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { config, ... }: {
     boot.loader.grub = {
       enable = true;
       devices = [ "/dev/sda" ];

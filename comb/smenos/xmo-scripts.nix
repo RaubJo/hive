@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   countdown = pkgs.writeShellScriptBin "countdown" ''
     #!/usr/bin/env bash

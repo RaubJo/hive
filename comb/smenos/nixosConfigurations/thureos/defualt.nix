@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { ... }: {
     imports = [
       cell.hardwareProfiles.thureos
       cell.nixosSuites.base

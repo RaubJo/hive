@@ -1,8 +1,5 @@
  { inputs, cell, }:
- let
-   inherit (cell) nixosSuites;
-   l = inputs.nixpkgs.lib // builtins;
- in {
+ {
    meletao = import ./nixosConfigurations/meletao { inherit inputs cell; };
    nephos = import ./nixosConfigurations/nephos { inherit inputs cell; };
    kouphizo = import ./nixosConfigurations/kouphizo { inherit inputs cell; };
