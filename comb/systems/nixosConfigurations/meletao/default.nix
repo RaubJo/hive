@@ -59,7 +59,7 @@ rec {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {
-      imports = [ inputs.nix-colors.homeManagerModule inputs.cells.homes.homeConfigurations.default ];
+      imports = [ inputs.cells.homes.homeConfigurations.default ];
       home.stateVersion = "23.05";
     };
   }];

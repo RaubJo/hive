@@ -3,7 +3,7 @@ let
 in
 {
   wpa-networks = with nixosModules; [ wifi ];
-  dyndns = with nixosModules; [ dyndns ];
+  ddclient = with nixosModules; [ dyndns ];
   gitea = with nixosModules; [ gitea-server ];
-  cloudflared = with nixosModules; [ cloudflared ];
+  cloudflare-tunnel = with nixosModules; [ cloudflared ];
 }

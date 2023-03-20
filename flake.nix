@@ -110,7 +110,7 @@
         packages.aarch64-linux = {
           inherit (inputs.disko.packages.aarch64-linux) disko;
         };
-        devShells = std.harvest self [ "_test" "devshells" ];
+        devShells = std.harvest self [ "_ci" "devshells" ];
       }
       {
         colmenaHive = hive.collect self "colmenaConfigurations";
