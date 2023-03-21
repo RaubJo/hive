@@ -5,12 +5,10 @@
     udiskie
     numlockx
     usbutils
-    htop
     lshw
-    git
-    neovim
     brightnessctl
     acpi
+
     docker
     docker-compose
     direnv

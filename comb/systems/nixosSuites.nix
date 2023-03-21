@@ -1,5 +1,5 @@
 let
-  inherit (inputs.cells) agenix applications emacs filesystems firmware gui hardware networking security services terminal users utils;
+  inherit (inputs.cells) agenix applications emacs filesystems firmware gui hardware modules networking security services terminal users utils;
 in
 rec
 {
@@ -16,6 +16,7 @@ rec
 
   lenovo-p50 = [ ]
     ++ base
+    ++ applications.nixosSuites.default
     ++ services.nixosSuites.lenovo-p50
     ++ hardware.nixosSuites.lenovo-p50
     ++ hardware.nixosSuites.intel
@@ -25,10 +26,12 @@ rec
     ++ gui.nixosSuites.xmonad
     #++ agenix.nixosSuites.wpa-networks
     ++ networking.nixosSuites.default
+    #++ services.nixosSuites.gitea-server
     ++ users.nixosSuites.default;
 
   gitea-server = [ ]
-    ++ services.nixosSuites.gitea
+    #++ services.nixosSuites.gitea
+    ++ modules.nixosSuites.git-server
     #++ secrets.nixosSuites.gitea
     ++ users.nixosSuites.kurios;
 

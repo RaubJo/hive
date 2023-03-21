@@ -1,10 +1,17 @@
 { inputs, cell, }:
 let
   version = "23.05";
+in
+let
   init = { config, pkgs, lib, ... }: {
     imports = [
       cell.hardwareProfiles.nephos
     ];
+
+    config.servers.git = {
+      databasePasswordFile = config.age.secrets.gitea-dbpass.path;
+    };
+
   };
 in
 rec {

@@ -1,5 +1,8 @@
 { inputs, cell, }:
 let
+  version = "23.05";
+in
+let
   init = { config, pkgs, ... }: {
     imports = [
       cell.hardwareProfiles.meletao
@@ -10,6 +13,7 @@ let
       #    cell.nixosSuites.xmonad
       #cell.nixosSuites.hyprland
     ] ++ cell.nixosSuites.lenovo-p50;
+
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
@@ -37,7 +41,7 @@ let
     };
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
-    system.stateVersion = "23.05";
+    system.stateVersion = version;
   };
 in
 rec {
@@ -60,7 +64,7 @@ rec {
     home-manager.useUserPackages = true;
     home-manager.users.joseph = {
       imports = [ inputs.cells.homes.homeConfigurations.default ];
-      home.stateVersion = "23.05";
+      home.stateVersion = version;
     };
   }];
 }
