@@ -4,7 +4,7 @@
     deployment = {
       allowLocalDeployment = true;
       targetHost = null;
-      #keys = { test_password = { keyFile = ./secrets/test_password.txt; }; };
+      keys = { wireless-env = { keyFile = ../agenix/secrets/wireless-env.age; }; };
     };
     imports = [ cell.nixosConfigurations.meletao ];
   };

@@ -1,7 +1,6 @@
 #+title: README
 #+date: <2022-12-07 Wed>
 #+options: toc:nil
-
 #+begin_export markdown
 
 <div align="center">
@@ -86,20 +85,20 @@ These are application specific configurations that can be referenced individuall
 ** Implemented in this flake
 - [[https://github.com/nix-community/home-manager][Home-manager]]
 - [[https://github.com/zhaofengli/colmena][Colmena]]
-- [[https://github.com/nix-community/disko][Disko]] WIP
-- [[https://github.com/numtide/devshell][Devshell]] I don't have any devshells declared, but it is there should I want to. (It doesn't make a lot of sense because I am the only one developing this flake.)
+- [[https://github.com/nix-community/disko][Disko]] WIP, Disko has yet to support local flake URIs
+- [[https://github.com/numtide/devshell][Devshell]]
 - [[https://github.com/misterio77/nix-colors][Nix-colors]]
 - [[https://github.com/nix-community/nixos-hardware][Nixos-hardware]]
 - [[https://github.com/numtide/flake-utils][Flake-utils]]
 - [[https://github.com/gytis-ivaskevicius/flake-utils-plus][Flake-utils-plus]]
-- [[https://github.com/ryantm/agenix][Agenix]] WIP
+- [[https://github.com/ryantm/agenix][Agenix]]
+- [[https://github.com/yaxitech/ragenix][Ragenix]] Rust based cli for agenix (This is what is actually used)
 ** Others
 ***  Deployment
 - [[https://github.com/serokell/deploy-rs][Deploy-rs]]
 - [[https://github.com/DBCDK/morph][Morph]]
 *** Secrets Management
 - [[https://github.com/Mic92/sops-nix][Sops-nix]]
-- [[https://github.com/yaxitech/ragenix][Ragenix]] Rust based cli for agenix
 - [[https://github.com/jordanisaacs/homeage][Homeage]]
 *** Misc
 - [[https://github.com/gvolpe/dconf2nix][Dconf2nix]]

@@ -13,13 +13,13 @@
         isNormalUser = true;
         shell = pkgs.fish;
         hashedPassword =
-          "$6$F88oWiHPI3YmK5Yv$YQgPl6XhNcy5Byw6dLc7KHu4q/pRituimcnPt7/0Q3RGtblDvVIvsFbFWHmmkfrPNd5wXMc/AvNYKDs26P1hP/"
-            extraGroups = [
-        "wheel"
-        "video"
-        "dialout"
-        "networkmanager"
-        "surface-control"
+          "$6$F88oWiHPI3YmK5Yv$YQgPl6XhNcy5Byw6dLc7KHu4q/pRituimcnPt7/0Q3RGtblDvVIvsFbFWHmmkfrPNd5wXMc/AvNYKDs26P1hP/";
+        extraGroups = [
+          "wheel"
+          "video"
+          "dialout"
+          "networkmanager"
+          "surface-control"
         ];
       };
     };

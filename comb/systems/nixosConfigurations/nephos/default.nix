@@ -20,4 +20,4 @@ rec {
     #TODO: Determine which new modules to import
     #cell.nixosSuites.base, gitea-server, secrets,docker, ddclient, git and http custom modules
   ];
-};
+}

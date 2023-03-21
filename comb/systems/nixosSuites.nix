@@ -23,8 +23,8 @@ rec
     ++ services.nixosSuites.lenovo-p50
     ++ services.nixosSuites.web-dev
     ++ gui.nixosSuites.xmonad
-    ++ agenix.nixosSuites.wpa-networks
-    ++ networking.nixosSuites.secure
+    #++ agenix.nixosSuites.wpa-networks
+    ++ networking.nixosSuites.default
     ++ users.nixosSuites.default;
 
   gitea-server = [ ]
