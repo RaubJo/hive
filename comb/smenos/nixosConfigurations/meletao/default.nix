@@ -1,6 +1,6 @@
 { inputs, cell, }:
 let
-  init = { config, pkgs, lib, ... }: {
+  init = { pkgs, lib, ... }: {
     imports = [
       cell.hardwareProfiles.meletao
       cell.nixosSuites.base
@@ -58,7 +58,7 @@ let
     system.stateVersion = "23.05";
   };
 
-  discordASAR = self: super: {
+  discordASAR = _self: super: {
     discord = super.discord.override { withOpenASAR = true; };
   };
 in rec {

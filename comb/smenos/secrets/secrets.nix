@@ -4,8 +4,6 @@ let
 
   meletao =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG8kUvXjSeu6VPlLyqrvOxs1x/oovXBLwTryUW2IPSfD";
-  kouphizo = "";
-  kerugma = "";
   tameieon =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINbTEKwuO9ST9EQnzqeN9GMo2oXhpf00lY/lBQMs/j4";
   nephos =

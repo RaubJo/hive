@@ -6,11 +6,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
-  outputs = { self, flake-utils, nixpkgs }:
+  outputs = { flake-utils, nixpkgs }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         overlays = [
-          (self: super: rec {
+          (_self: super: rec {
             nodejs = super.nodejs-18_x;
             pnpm = super.nodePackages.pnpm;
             yarn = (super.yarn.override { inherit nodejs; });
