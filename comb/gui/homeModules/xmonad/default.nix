@@ -5,7 +5,6 @@
     enable = true;
     initExtra = "xrandr --dpi 90";
     windowManager = {
-      awesome.enable = false;
       xmonad.enable = true;
       xmonad.enableContribAndExtras = true;
       xmonad.extraPackages = hpkgs: [
@@ -54,7 +53,7 @@
 
         -- Variables: ----------------------------------------------------------
         myFont :: String
-        myFont = "xft:Fira Code Nerd Font:regular:size=11:antialias=true:hinting=true"
+        myFont = "xft:SauceCodePro Nerd Font:regular:size=13:antialias=true:hinting=true"
 
         myModMask :: KeyMask
         myModMask = mod4Mask -- Set to SUPER key
@@ -304,6 +303,7 @@
         myStartupHook = do
                 spawnOnce "udiskie &"
                 spawnOnce "feh --randomize --bg-scale ~/.wallpapers/"
+                spawnOnce "numlockx on"
 
         -- Now run xmonad with all the defaults we set up. ---------------------
 

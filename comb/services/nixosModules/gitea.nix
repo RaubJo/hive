@@ -1,4 +1,4 @@
-i { config, pkgs, ... }: {
+{ config, pkgs, ... }: {
   services.gitea = {
     enable = true;
     appName = "Gitea at Bitwright.dev";

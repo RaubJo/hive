@@ -31,6 +31,7 @@
       ho = "https://mipmip.github.io/home-manager-option-search/?{}";
     };
     settings = {
+      #https://qutebrowser.org/doc/help/settings.html
       fonts = {
         default_family = "SauceCodePro Nerd Font";
         default_size = "10pt";
@@ -60,7 +61,7 @@
         last_close = "close";
         show = "multiple";
       };
-      webpage = {
+      colors.webpage = {
         darkmode.enabled = false;
         preferred_color_scheme = "dark";
       };

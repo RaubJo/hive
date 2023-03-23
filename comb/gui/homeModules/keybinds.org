@@ -1,0 +1,32 @@
+#+title: Keybinds
+#+author: Joseph Raub
+#+date: <2023-03-23 Thu>
+
+
+* System
+| Super              | Mod4      |
+| Quit WM            | M-C q     |
+| Browser            | M-b       |
+| Rofi               | M-r       |
+| Filebrowser        | M-f       |
+| Terminal           | M-Enter   |
+| Toggle Caffeine-ng | M-c       |
+| New background     | M-w       |
+| Autorandr force    | M-a       |
+| Emacs              | M-e e     |
+| Cmus               | M-u u     |
+| Cmus play          | M-u p     |
+| Cmus next          | M-u j     |
+| Cmus prev          | M-u k     |
+| Cmus pause         | M-u space |
+| Cmus repeat        | M-u r     |
+| Cmus shuffle       | M-u s     |
+| htop               | M-t h     |
+| ranger             | M-t r     |
+| bluetoothctl       | M-t b     |
+| Close client       | M-S-c     |
+| Next layout        | M-Space   |
+| Client Up          | M-j       |
+| Client Down        | M-k       |
+| Client Left        | M-h       |
+| Client Right       | M-l       |

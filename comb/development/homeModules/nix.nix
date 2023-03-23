@@ -2,6 +2,6 @@
   home.packages = with pkgs; [
     nixfmt
     alejandra
-    rnix-lsp
+    #rnix-lsp #nix language server
   ];
 }

@@ -18,5 +18,6 @@
     vscode
     discord
     feh
+    nerdfonts
   ];
 }

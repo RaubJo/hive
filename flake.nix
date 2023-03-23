@@ -99,6 +99,9 @@
 
             # library holds shared knowledge made code
             (functions "lib")
+
+            # hooks for cleaner code
+            (nixago "hooks")
           ];
         nixpkgsConfig = { allowUnfree = true; };
       }

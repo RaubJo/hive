@@ -1,8 +1,9 @@
 { config, lib, options, pkgs, ... }:
 with lib;
-let cfg = config.smenos.servers.git;
-in {
-  options.smenos.servers.git = {
+let cfg = config.servers.git;
+in
+{
+  options.servers.git = {
     enable = mkOption {
       default = false;
       type = types.bool;

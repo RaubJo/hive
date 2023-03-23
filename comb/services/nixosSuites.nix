@@ -1,6 +1,6 @@
 { inputs, cell }:
 let
-  inherit (cell) nixosModules;
+  inherit (cell) nixosModules nixosProfiles;
 in
 rec {
   default = with nixosModules; [
@@ -16,7 +16,7 @@ rec {
     mysql
   ];
 
-  gitea-server = with nixosModules; [
+  gitea-server = with nixosProfiles; [
     gitea
     #cloudflared - Zero Trust Tunneling!
     #ddclient - use this if you can only have dyndns
