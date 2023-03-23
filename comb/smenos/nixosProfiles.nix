@@ -1,9 +1,8 @@
 let
-  inherit (inputs) hyprland nixpkgs;
-  lib = nixpkgs.lib // builtins;
+  inherit (inputs) hyprland;
 in {
   # Networking #
-  firewall = { config, ... }: {
+  firewall = { ... }: {
     networking.firewall = {
       enable = true;
       checkReversePath = "loose";
@@ -12,7 +11,7 @@ in {
     };
   };
 
-  wpa-networks = { config, ... }: {
+  wpa-networks = { ... }: {
     networking = {
       networkmanager.enable = false;
       wireless = {
@@ -80,7 +79,7 @@ in {
     };
   };
 
-  nm-networks = { config, ... }: {
+  nm-networks = { ... }: {
     networking = {
       networkmanager = {
         enable = true;
@@ -90,7 +89,7 @@ in {
   };
 
   # Desktop Environments #
-  gnome = { config, ... }: {
+  gnome = { ... }: {
     services.xserver = {
       enable = true;
       layout = "us";
@@ -103,7 +102,7 @@ in {
     };
   };
 
-  kde = { config, pkgs, ... }: {
+  kde = { pkgs, ... }: {
     services.xserver = {
       enable = true;
       layout = "us";
@@ -118,7 +117,7 @@ in {
     };
   };
 
-  awesome = { config, ... }: {
+  awesome = { ... }: {
     services.xserver = {
       enable = true;
       layout = "us";
@@ -132,7 +131,7 @@ in {
     };
   };
 
-  xmonad = { config, ... }: {
+  xmonad = { ... }: {
     imports = [ ./xmo-scripts.nix ];
     services.xserver = {
       enable = true;
@@ -150,7 +149,7 @@ in {
     };
   };
 
-  laptop-resolutions = { config, ... }: {
+  laptop-resolutions = { ... }: {
     hardware.video.hidpi.enable = true;
     services.xserver = {
       dpi = 96;
@@ -199,7 +198,7 @@ in {
   };
 
   ### Web Services ###
-  hydra = { config, ... }: {
+  hydra = { ... }: {
     services.hydra = {
       enable = true;
       hydraURL = "https://localhost:80";
@@ -209,7 +208,7 @@ in {
     };
   };
 
-  minidlna = { config, ... }: {
+  minidlna = { ... }: {
     services.minidlna = {
       enable = true;
       settings = {
@@ -244,7 +243,7 @@ in {
   };
 
   ### Systemwide Configurations ####
-  fonts = { config, pkgs, ... }: {
+  fonts = { pkgs, ... }: {
     fonts = {
       fonts = with pkgs; [
         (nerdfonts.override { fonts = [ "SourceCodePro" "Mononoki" ]; })
@@ -267,7 +266,7 @@ in {
     };
   };
 
-  locale = { config, ... }: {
+  locale = { ... }: {
     time.timeZone = "America/Chicago";
     i18n.defaultLocale = "en_US.UTF-8";
     console = {
@@ -276,7 +275,7 @@ in {
     };
   };
 
-  minify = { config, ... }: {
+  minify = { ... }: {
     documentation = {
       enable = true;
       man.enable = true;
@@ -284,7 +283,7 @@ in {
     };
   };
 
-  nix = { config, pkgs, ... }: {
+  nix = { pkgs, ... }: {
     nix = {
       package = pkgs.nixVersions.stable;
       extraOptions = ''
@@ -299,7 +298,7 @@ in {
     };
   };
 
-  nvidia = { config, pkgs, ... }: {
+  nvidia = { config, ... }: {
     imports = [ ./nvidiaScripts.nix ];
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
@@ -313,7 +312,7 @@ in {
     };
   };
 
-  printing = { config, pkgs, ... }: {
+  printing = { pkgs, ... }: {
     services.printing = {
       enable = true;
       drivers = [ pkgs.gutenprint ];
@@ -328,7 +327,7 @@ in {
     };
   };
 
-  packages = { config, pkgs, ... }: {
+  packages = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       colmena
       udiskie
@@ -347,7 +346,7 @@ in {
     ];
   };
 
-  plymouth = { config, ... }: { boot.plymouth = { enable = true; }; };
+  plymouth = { ... }: { boot.plymouth = { enable = true; }; };
 
   users = { config, pkgs, ... }: {
     users = {
@@ -390,7 +389,7 @@ in {
     }];
   };
 
-  kurios = { config, pkgs, ... }: {
+  kurios = { pkgs, ... }: {
     # This profile describes server(s) administrator account
     users.mutableUsers = false;
     users.users.root.hashedPassword =
@@ -411,7 +410,7 @@ in {
     };
   };
 
-  zram = { config, ... }: {
+  zram = { ... }: {
     zramSwap = {
       enable = true;
       priority = 5;
@@ -423,7 +422,7 @@ in {
     };
   };
 
-  zfs = { config, lib, ... }: {
+  zfs = { lib, ... }: {
     boot.initrd.postDeviceCommands = lib.mkAfter ''
       zfs rollback -r rpool/local/root@blank
     '';
@@ -435,7 +434,7 @@ in {
 
   # Sytem Services #
 
-  autorandr = { config, pkgs, ... }: {
+  autorandr = { config, ... }: {
     services.autorandr = {
       enable = true;
       #defaultTarget = "mobile";
@@ -492,7 +491,7 @@ in {
     };
   };
 
-  cloudflare-tunnel = { config, pkgs, ... }: {
+  cloudflare-tunnel = { ... }: {
     services.cloudflared = {
       enable = true;
       tunnels = {
@@ -691,7 +690,7 @@ in {
     };
   };
 
-  ddclient = { config, pkgs, ... }: {
+  ddclient = { pkgs, ... }: {
     services.ddclient = {
       enable = true;
       ssl = true;
@@ -705,7 +704,7 @@ in {
     };
   };
 
-  gitlab = { config, pkgs, ... }: {
+  gitlab = { pkgs, ... }: {
     services.gitlab = {
       enable = true;
       databasePasswordFile = pkgs.writeText "dbPassword" "test123";
@@ -756,7 +755,7 @@ in {
     };
   };
 
-  mysql = { config, pkgs, ... }: {
+  mysql = { pkgs, ... }: {
     services.mysql = {
       enable = true;
       package = pkgs.mysql80;
@@ -764,9 +763,9 @@ in {
     };
   };
 
-  ssh = { config, ... }: { services.openssh.enable = true; };
+  ssh = { ... }: { services.openssh.enable = true; };
 
-  tailscale = { config, ... }: {
+  tailscale = { ... }: {
     services.tailscale.enable = true;
     environment.etc = {
       "resolv.conf" = {
@@ -786,7 +785,7 @@ in {
     };
   };
 
-  touchscreen = { config, ... }: {
+  touchscreen = { ... }: {
     services = {
       touchegg.enable = true;
       unclutter.enable = true;
@@ -810,7 +809,7 @@ in {
     };
   };
 
-  thinkpad-dock = { config, pkgs, ... }: {
+  thinkpad-dock = { pkgs, ... }: {
     services.udev = {
       enable = true;
       extraRules = ''

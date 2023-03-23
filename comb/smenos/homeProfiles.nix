@@ -1,4 +1,4 @@
-let inherit (inputs) nix-colors nixpkgs hyprland f2k doom-emacs;
+let inherit (inputs) nix-colors nixpkgs hyprland doom-emacs;
 in {
 
   # Shells and Prompts

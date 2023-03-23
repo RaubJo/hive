@@ -103,7 +103,7 @@ let
       recursiveMerge = with l;
         attrList:
         let
-          f = attrPath:
+          f = _attrPath:
             zipAttrsWith (n: values:
               if tail values == [ ] then
                 head values

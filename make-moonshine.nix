@@ -7,7 +7,7 @@
 in
   self: let
     comb = cure self;
-    res = name: config: let
+    res = _name: config: let
       inherit
         (shake config {})
         evaled
