@@ -14,11 +14,11 @@
         "uas"
         "sd_mod"
         "sr_mod"
-        #"rtsx_pci_sdmmc"
-        #"nvidia"
-        #"nvidia_modeset"
-        #"nvidia_uvm"
-        #"nvidia_drm"
+        "rtsx_pci_sdmmc"
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
       ];
       kernelModules = [ "nvme" "kvm-intel" "coretemp" ];
     };
