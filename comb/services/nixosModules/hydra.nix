@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   services.hydra = {
     enable = true;
     hydraURL = "https://localhost:80";

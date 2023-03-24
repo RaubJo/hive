@@ -1,4 +1,4 @@
-{ inputs, cell, }:
+{ inputs, }:
 let
   inherit (inputs.cells) modules agenix;
 in

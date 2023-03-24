@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   services.minidlna = {
     enable = true;
     settings = {

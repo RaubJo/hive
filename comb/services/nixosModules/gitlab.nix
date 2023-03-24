@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   services.gitlab = {
     enable = true;
     databasePasswordFile = pkgs.writeText "dbPassword" "test123";

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   services.ddclient = {
     enable = true;
     ssl = true;

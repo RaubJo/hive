@@ -1,4 +1,4 @@
-{ inputs, cell, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.sway = {

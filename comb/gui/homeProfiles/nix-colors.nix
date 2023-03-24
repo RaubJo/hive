@@ -1,6 +1,6 @@
 { inputs, cell }:
 let
-  inherit (inputs) nix-colors nixpkgs;
+  inherit (inputs) nix-colors;
 in
 {
   imports = [ nix-colors.homeManagerModule ];

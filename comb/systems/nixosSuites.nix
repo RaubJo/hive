@@ -1,5 +1,5 @@
 let
-  inherit (inputs.cells) agenix applications emacs filesystems firmware gui hardware modules networking security services terminal users utils;
+  inherit (inputs.cells) applications filesystems firmware gui hardware modules networking security services users utils;
 in
 rec
 {

@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ lib, ... }: {
   boot.loader.grub.enable = false;
   boot.loader.generic-extlinux-compatible.enable = true;
   boot.initrd.availableKernelModules = [ "usb_storage" "usbhid" ];

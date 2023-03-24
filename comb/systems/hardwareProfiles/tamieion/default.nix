@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, lib, ... }: {
   boot.initrd.availableKernelModules = [
     "ehci_pci"
     "ahci"

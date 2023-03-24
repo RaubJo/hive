@@ -1,4 +1,4 @@
-{ inputs, cell }:
+{ cell }:
 {
   services.xserver = {
     enable = true;

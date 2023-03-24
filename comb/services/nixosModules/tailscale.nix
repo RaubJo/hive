@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   services.tailscale.enable = true;
   environment.etc = {
     "resolv.conf" = {

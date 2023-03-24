@@ -1,7 +1,7 @@
 { inputs, cell, }:
 let
   version = "23.05";
-  init = { config, pkgs, lib, ... }: {
+  init = { pkgs, ... }: {
     imports = [
       cell.hardwareProfiles.kouphizo
       #TODO: Determine which modules to import

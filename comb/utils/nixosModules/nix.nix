@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   nix = {
     package = pkgs.nixVersions.stable;
     extraOptions = ''

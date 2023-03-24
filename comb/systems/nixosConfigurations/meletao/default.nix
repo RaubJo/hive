@@ -3,7 +3,7 @@ let
   version = "23.05";
 in
 let
-  init = { config, pkgs, ... }: {
+  init = { pkgs, ... }: {
     imports = [
       cell.hardwareProfiles.meletao
       #    cell.nixosSuites.base

@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   services = {
     touchegg.enable = true;
     unclutter.enable = true;

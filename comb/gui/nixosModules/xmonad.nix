@@ -1,4 +1,4 @@
-{ inputs, cell, config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   countdown = pkgs.writeShellScriptBin "countdown" ''

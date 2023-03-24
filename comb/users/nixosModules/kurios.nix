@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   # This profile describes server(s) administrator account
   users.mutableUsers = false;
   users.users.root.hashedPassword =

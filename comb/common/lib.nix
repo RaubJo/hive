@@ -25,7 +25,7 @@ rec {
 
       files = l.filterAttrs seive (builtins.readDir dirPath);
     in
-    l.filterAttrs (n: v: v != { }) (l.mapAttrs' collect files);
+    l.filterAttrs (_n: v: v != { }) (l.mapAttrs' collect files);
 
   importRakeLeaves = path: args:
     l.mapAttrs

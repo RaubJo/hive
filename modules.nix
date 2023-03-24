@@ -1,7 +1,3 @@
-let
-  inherit (inputs) hyprland nixpkgs;
-  lib = nixpkgs.lib // builtins;
-in
 {
   drone-ci = { config, pkgs, ... }: {
     systemd.services.drone-server = {

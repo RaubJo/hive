@@ -1,9 +1,6 @@
 { inputs, cell, }:
 let
-  version = "23.05";
-in
-let
-  init = { config, pkgs, lib, ... }: {
+  init = { config, ... }: {
     imports = [
       cell.hardwareProfiles.nephos
     ];

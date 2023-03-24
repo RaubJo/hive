@@ -1,4 +1,4 @@
-{ inputs, cell }:
+{ cell }:
 let
   inherit (cell) nixosModules nixosProfiles;
 in

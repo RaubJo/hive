@@ -1,4 +1,4 @@
-{ inputs, cell, }:
+{ cell, }:
 let inherit (cell) homeModules homeProfiles;
 in
 rec {
