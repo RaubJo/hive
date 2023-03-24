@@ -33,6 +33,10 @@
       device = "/dev/disk/by-uuid/869E-504F";
       fsType = "vfat";
     };
+    "/mnt/Internal-Storage" = {
+      device = "dev/disk/by-uuid/35be088a-295a-457c-a10c-ca18f9813c97";
+      fsType = "ext4";
+    };
   };
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
   networking.useDHCP = lib.mkDefault true;
