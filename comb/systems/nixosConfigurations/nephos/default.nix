@@ -9,6 +9,10 @@ let
     ];
 
     config.servers.git = {
+      domainName = "bitwright.dev";
+      httpPort = 3001;
+      sshPort = 22;
+      adminEmail = "JosephRaub98@gmail.com";
       databasePasswordFile = config.age.secrets.gitea-dbpass.path;
     };
 
@@ -24,7 +28,7 @@ rec {
   imports = [
     init
     inputs.agenix.nixosModules.default
-    #TODO: Determine which new modules to import
-    #cell.nixosSuites.base, gitea-server, secrets,docker, ddclient, git and http custom modules
+    cell.nixosSuites.gitea-server
+    #cell.nixosSuites.web-server
   ];
 }

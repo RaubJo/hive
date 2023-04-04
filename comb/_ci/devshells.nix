@@ -47,7 +47,7 @@ l.mapAttrs (_: dev.mkShell) {
       }
       {
         package = nixpkgs.statix;
-        help = "Lint codebase for advice";
+        help = "Linter";
         category = "Formatting";
       }
       {
@@ -59,7 +59,7 @@ l.mapAttrs (_: dev.mkShell) {
       {
         name = "du-svg";
         command = "nix-du | dot -Tsvg > du.svg";
-        help = "Create svg image of nix store with nix-du";
+        help = "Create svg graph of nix store with nix-du";
         category = "Helps";
       }
       {

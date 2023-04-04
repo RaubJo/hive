@@ -1,8 +1,6 @@
 { inputs, cell, }:
-let
-  version = "23.05";
-in
-let
+let version = "23.05";
+in let
   init = { config, pkgs, ... }: {
     imports = [
       cell.hardwareProfiles.meletao
@@ -43,16 +41,19 @@ let
     programs.dconf.enable = true;
     system.stateVersion = version;
   };
-in
-rec {
+in rec {
   bee.system = "x86_64-linux";
   bee.home = inputs.home;
   bee.pkgs = import inputs.nixos {
     inherit (inputs.nixpkgs) system;
     config.allowUnfree = true;
-    overlays = [
+    overlays = let
+      discordASAR = self: super: {
+        discord = super.discord.override { withOpenASAR = true; };
+      };
+    in [
       #inputs.hyprland.overlays.default
-      inputs.cells.overlays.nixosModules.discordASAR
+      discordASAR
     ];
   };
   imports = [
