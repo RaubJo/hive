@@ -19,5 +19,6 @@
     discord
     feh
     nerdfonts
+    makemkv
   ];
 }

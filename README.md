@@ -81,7 +81,7 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 <tr>
 <td class="org-left">Window Manager</td>
 <td class="org-left">Xmonad</td>
-<td class="org-left">Xmonad</td>
+<td class="org-left">Awesome</td>
 <td class="org-left">Gnome</td>
 <td class="org-left">-</td>
 <td class="org-left">-</td>
@@ -101,7 +101,7 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 <tr>
 <td class="org-left">Bar</td>
 <td class="org-left">Xmobar</td>
-<td class="org-left">Xmobar</td>
+<td class="org-left">-</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">-</td>
 <td class="org-left">-</td>
@@ -162,7 +162,7 @@ If you are looking at this repo, I don&rsquo;t think I need to explain what [Nix
 <td class="org-left">Web Browser</td>
 <td class="org-left">Qutebrowser</td>
 <td class="org-left">Qutebrowser</td>
-<td class="org-left">Epiphany</td>
+<td class="org-left">Epiphany / Firefox</td>
 <td class="org-left">-</td>
 <td class="org-left">-</td>
 </tr>
@@ -182,12 +182,7 @@ It is well worth your time to take a deep dive into nix. Studying the documentat
 
 ### What is hive?
 
-Hive is a Nixos system configuration flake with the naming convention around a beehive.
-
-
-### Why use Hive?
-
-I use hive primarily because of its integration with [std](https://github.com/divnix/std).
+Hive is a nix flake library desgined to reduce boilerplate in Nixos configuration(s). It has it&rsquo;s foundation in [std](http:www.github.com/divnix/std).
 
 
 ### What about Digga?
@@ -195,46 +190,51 @@ I use hive primarily because of its integration with [std](https://github.com/di
 When I came across Divnix and [Digga](https://github.com/divnix/digga), I began to switch to it. I liked the organization of [Digga](https://github.com/divnix/digga) and it made sense while holding to the &rsquo;traditional&rsquo; nix flake layout. At the same time whilst digging around in the Divnix repos I couldn&rsquo;t help notice Hive and [std](https://github.com/divnix/std). As I read the Standard book (more than once) and played with it in &rsquo;nix repl&rsquo; I decided to skip the [Digga](https://github.com/divnix/digga) config and use [Hive](https://github.com/divnix/hive), this was further solidified after watching all of the [std](https://github.com/divnix/std) videos (linked below).
 
 
-## Hosts
+# Repo structure
+
+Inside each cell you may find the following files: *nixosModules.nix*, *homeModules.nix*, *nixosSuites.nix*, *homeSuites.nix*. The &#x2026;Modules.nix files import the files inside their respective folder, nixosModules/ or homeModules/ The &#x2026;Suites.nix files group the modules together. *Note: nixosSuites cannot import homeModules and homeSuites cannot import nixosModules.* Most, if not all, nixosModules are grouped before importing into system configuration in *./comb/systems/nixosSuites.nix*. It is possible to import them directly into the system config, but I chose not to in order to reduce code duplication. All homeSuites are used in the home configurations located in *./comb/homes/homeConfigurations.nix*.
 
 
-### μελετάω (Meletao : Thought)
-
--   Daily driver laptop, this is where I do most of my work.
+# File Hierarchy
 
 
-### νέφος (Nephos : Cloud)
-
--   Desktop server
--   Runs cloud services
+## comb
 
 
-### Κουφίζω (Kouphizo : Lightweight)
+### systems
 
--   Pinebook Pro
--   Light in weight and processing &#x2026;, great for traveling.
+1.  μελετάω (Meletao : Thought)
+
+    -   Daily driver laptop, this is where I do most of my work.
+
+2.  νέφος (Nephos : Cloud)
+
+    -   Server
+
+3.  Κουφίζω (Kouphizo : Lightweight)
+
+    -   Pinebook Pro
+    -   Light in weight and processing &#x2026;, great for traveling.
+
+4.  θυρεός (Thureos : Shield)
+
+    -   Raspberry Pi Zero W
+    -   Protector of my network via pihole and tailscale.
+    -   WIP
+
+5.  Κήρυγμα (Kerugma : Preach)
+
+    -   Microsoft Surface Go 2
+    -   Used when teaching
 
 
-### θυρεός (Thureos : Shield)
-
--   Raspberry Pi Zero W
--   Protector of my network via pihole and tailscale.
+# Development Environments [WIP]
 
 
-### Κήρυγμα (Kerugma : Preach)
-
--   Microsoft Surface Go 2
--   Used when teaching
+## PHP
 
 
-## Suites
-
-These are groups of profiles that can be referenced at once, instead of separately.
-
-
-## Profiles
-
-These are application specific configurations that can be referenced individually or integrated through suites.
+## Python
 
 
 # Cool Nix projects
@@ -244,13 +244,14 @@ These are application specific configurations that can be referenced individuall
 
 -   [Home-manager](https://github.com/nix-community/home-manager)
 -   [Colmena](https://github.com/zhaofengli/colmena)
--   [Disko](https://github.com/nix-community/disko) WIP
--   [Devshell](https://github.com/numtide/devshell) I don&rsquo;t have any devshells declared, but it is there should I want to. (It doesn&rsquo;t make a lot of sense because I am the only one developing this flake.)
+-   [Disko](https://github.com/nix-community/disko) WIP, Disko has yet to support local flake URIs
+-   [Devshell](https://github.com/numtide/devshell)
 -   [Nix-colors](https://github.com/misterio77/nix-colors)
 -   [Nixos-hardware](https://github.com/nix-community/nixos-hardware)
 -   [Flake-utils](https://github.com/numtide/flake-utils)
 -   [Flake-utils-plus](https://github.com/gytis-ivaskevicius/flake-utils-plus)
--   [Agenix](https://github.com/ryantm/agenix) WIP
+-   [Agenix](https://github.com/ryantm/agenix)
+-   [Ragenix](https://github.com/yaxitech/ragenix) Rust based cli for agenix (This is what I actually use)
 
 
 ## Others
@@ -265,8 +266,7 @@ These are application specific configurations that can be referenced individuall
 ### Secrets Management
 
 -   [Sops-nix](https://github.com/Mic92/sops-nix)
--   [Ragenix](https://github.com/yaxitech/ragenix) Rust based cli for agenix
--   [Homeage](https://github.com/jordanisaacs/homeage)
+-   [Homeage](https://github.com/jordanisaacs/homeage) (Secrets for home-manager)
 
 
 ### Misc
@@ -305,7 +305,11 @@ These were what help me understand [std](https://github.com/divnix/std) the most
 -   [Std - Nixago](https://www.loom.com/share/5c1badd77ab641d3b8e256ddbba69042)
 
 
-## Random stuff I want to remember
+## Inspirations
 
 -   [Winter Theme](https://github.com/KubqoA/dotfiles)
+    I really like the waybar config on this one.
+-   [GTrunSec/hive](https://github.com/GTrunSec/hive)
+    -   This inspired the cellular structure of this flake.
+    -   Also the import functions found in *./comb/common/lib.nix* are from his flake.
 
