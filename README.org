@@ -58,8 +58,11 @@ Hive is a nix flake library desgined to reduce boilerplate in Nixos configuratio
 When I came across Divnix and [[https://github.com/divnix/digga][Digga]], I began to switch to it. I liked the organization of [[https://github.com/divnix/digga][Digga]] and it made sense while holding to the 'traditional' nix flake layout. At the same time whilst digging around in the Divnix repos I couldn't help notice Hive and [[https://github.com/divnix/std][std]]. As I read the Standard book (more than once) and played with it in 'nix repl' I decided to skip the [[https://github.com/divnix/digga][Digga]] config and use [[https://github.com/divnix/hive][Hive]], this was further solidified after watching all of the [[https://github.com/divnix/std][std]] videos (linked below).
 * Repo structure
 Inside each cell you may find the following files: /nixosModules.nix/, /homeModules.nix/, /nixosSuites.nix/, /homeSuites.nix/.
+
 The ...Modules.nix files import the files inside their respective folder, nixosModules/ or homeModules/ The ...Suites.nix files group the modules together. /Note: nixosSuites cannot import homeModules and homeSuites cannot import nixosModules./
+
 Most, if not all, nixosModules are grouped before importing into system configuration in /./comb/systems/nixosSuites.nix/. It is possible to import them directly into the system config, but I chose not to in order to reduce code duplication.
+
 All homeSuites are used in the home configurations located in /./comb/homes/homeConfigurations.nix/.
 
 * File Hierarchy

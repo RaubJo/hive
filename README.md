@@ -193,8 +193,11 @@ When I came across Divnix and [Digga](https://github.com/divnix/digga), I began 
 # Repo structure
 
 Inside each cell you may find the following files: *nixosModules.nix*, *homeModules.nix*, *nixosSuites.nix*, *homeSuites.nix*.
+
 The &#x2026;Modules.nix files import the files inside their respective folder, nixosModules/ or homeModules/ The &#x2026;Suites.nix files group the modules together. *Note: nixosSuites cannot import homeModules and homeSuites cannot import nixosModules.*
+
 Most, if not all, nixosModules are grouped before importing into system configuration in *./comb/systems/nixosSuites.nix*. It is possible to import them directly into the system config, but I chose not to in order to reduce code duplication.
+
 All homeSuites are used in the home configurations located in *./comb/homes/homeConfigurations.nix*.
 
 
